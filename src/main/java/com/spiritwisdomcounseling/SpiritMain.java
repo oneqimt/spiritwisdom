@@ -10,6 +10,6 @@ public class SpiritMain {
     }
 
     public static void main(String[] args){
-        System.out.println("Welcome Spirit Wisdom Counseling!");
+        System.out.println("This is Spirit Wisdom Counseling!");
     }
 }
