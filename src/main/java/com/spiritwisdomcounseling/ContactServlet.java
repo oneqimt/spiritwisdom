@@ -80,7 +80,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             System.out.println("FIRST NAME: "+cleanfirstname +" "+"LAST NAME: "+cleanlastname);
             System.out.println("EMAIL: "+email +" "+"PHONE: "+phone);
             System.out.println("COMMENTS: "+comments +" "+"REFERRAL: "+referral);
-            // change referral to int
+
             int referralnumber = Integer.parseInt(referral);
             //TODO create table for this
             String referralStr = "";
