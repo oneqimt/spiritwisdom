@@ -31,6 +31,8 @@ public class EmailUtil {
 
         Map<String, String> map = new HashMap<>();
 
+        // added test comments
+
         MailjetClient client;
         MailjetRequest request;
         MailjetResponse response;
