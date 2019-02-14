@@ -1,0 +1,68 @@
+//
+// section.scss
+// Incline component
+//
+
+.section {
+  position: relative;
+  padding-top: $section-padding-y-sm;
+  padding-bottom: $section-padding-y-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $section-padding-y;
+    padding-bottom: $section-padding-y;
+  }
+
+  // Container
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+
+// Top
+
+.section-top {
+  padding-top: calc(#{$section-padding-y-sm} + #{$navbar-height});
+
+  @include media-breakpoint-up(md) {
+    padding-top: calc(#{$section-padding-y} + #{$navbar-height});
+  }
+}
+
+
+// Full
+
+.section-full {
+
+  @include media-breakpoint-up(md) {
+
+    // Scaffolding
+
+    .container {
+
+      > .row {
+        min-height: calc(100vh - #{$section-padding-y} * 2);
+
+        &:before {
+          content: '';
+          min-height: inherit;
+        }
+      }
+    }
+
+    // Top
+
+    &.section-top {
+
+      > .container {
+
+        > .row {
+          min-height: calc(100vh - #{$section-padding-y} * 2 - #{$navbar-height});
+        }
+      }
+    }
+  }
+}

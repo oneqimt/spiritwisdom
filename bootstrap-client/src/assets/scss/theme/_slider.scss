@@ -1,0 +1,124 @@
+//
+// slider.scss
+// Incline component
+//
+
+.slider {
+
+  // Flickity
+
+  .flickity-button {
+    width: $slider-nav-size; height: $slider-nav-size;
+    background-color: $slider-nav-bg;
+    border-radius: 0;
+    font-size: $slider-nav-font-size;
+    color: $slider-nav-color;
+    transform: none;
+    opacity: 1;
+    transition: $transition-base;
+
+    // Hover
+
+    @include hover-focus {
+      background-color: $slider-nav-hover-bg;
+      color: white;
+      opacity: 1;
+      box-shadow: none;
+    }
+
+    // Icon
+
+    &-icon {
+      fill: currentColor;
+    }
+
+    // Previous
+
+    &.previous {
+      top: auto; bottom: 0;
+      left: auto; right: calc(#{$slider-nav-size} + #{$slider-item-gutter-width} / 2);
+    }
+
+    // Next
+
+    &.next {
+      top: auto; bottom: 0;
+      left: auto; right: $slider-item-gutter-width / 2;
+    }
+  }
+
+}
+
+
+// Item
+
+.slider-item {
+  width: 100%; height: auto;
+  padding: 0 $slider-item-gutter-width / 2;
+}
+
+
+// Control
+
+.slider-control {
+  transition: $transition-base;
+  transition-property: color;
+  
+  // Hover
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+
+// Highlight
+
+.slider-highlight .slider-item {
+
+  // Selected
+
+  &.is-selected {
+  
+    // Line
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0; 
+      left: $slider-item-gutter-width / 2; 
+      right: $slider-item-gutter-width / 2;
+      border-top: 3px solid $primary;
+    }
+  }
+}
+
+
+// Fade
+
+.slider-fade {
+
+  // Flickity
+
+  .flickity-slider {
+    transform: none !important;
+  }
+}
+
+.slider-fade .slider-item {
+  left: 0 !important;
+  opacity: 0;
+  transition: $transition-fade;
+
+  // Not selected
+
+  &:not(.is-selected) {
+    z-index: -1;
+  }
+
+  // Selected
+
+  &.is-selected {
+    opacity: 1;
+  }
+}

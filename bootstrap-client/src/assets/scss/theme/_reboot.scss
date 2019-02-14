@@ -1,0 +1,16 @@
+//
+// reboot.scss
+// Extended from Bootstrap
+//
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+
+// Selection
+
+::selection {
+  background-color: $selection-bg;
+  color: $selection-color;
+}

@@ -1,0 +1,33 @@
+//
+// testimonial.scss
+// Incline component
+//
+
+.testimonial-slider-item {
+  width: 100%;
+  padding: 0 $grid-gutter-width / 4;
+  transition: $transition-fade;
+
+  @include media-breakpoint-up(md) {
+    padding: 0 $grid-gutter-width / 2;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+  }
+
+  &:not(.is-selected) {
+    opacity: $testimonials-item-opacity;
+  }
+}
+
+// Inner
+
+.testimonial-slider-item-inner {
+  padding: $testimonials-item-inner-padding-sm;
+  border: 1px solid $primary;
+
+  @include media-breakpoint-up(md) {
+    padding: $testimonials-item-inner-padding;
+  }
+}

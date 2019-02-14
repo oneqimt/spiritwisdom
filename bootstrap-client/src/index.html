@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    @@include("partials/head.html", {
+      "css": "theme",
+      "title": "Spirit Wisdom Counseling"
+    })
+  </head>
+  <body>
+
+    <!-- NAVBAR
+    ================================================= -->
+    @@include("partials/navbar.html", {
+      "togglable": true,
+      "type": "light",
+      "page": "index.html"
+    })
+
+    <!-- HERO
+    ================================================== -->
+    <section class="section section-top section-full">
+
+      <!-- Cover -->
+      <div class="bg-cover" style="background-image: url(assets/img/lotus.jpg);"></div>
+
+      <!-- Overlay -->
+      <div class="bg-overlay"></div>
+
+      <!-- Triangles -->
+      <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+      <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+
+      <!-- Content -->
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-8 col-lg-7">
+
+            <!-- Preheading -->
+            <!--<p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
+              by Simpleqode
+            </p>-->
+            
+            <!-- Heading -->
+            <h1 class="text-white text-center mb-4" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
+              bringing you peace
+            </h1>
+
+            <!-- Subheading -->
+            <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
+              mindfulness therapy to help you heal
+            </p>
+
+            <!-- Button -->
+            <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
+              <a href="index.html" target="_self" class="btn btn-outline-primary text-white">
+                Free Consultation!
+              </a>
+            </p>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+
+    </section>
+
+    <!-- SECTIONS
+    ================================================== -->
+    @@include("partials/pages/welcome.html")
+
+    <!-- FOOTER
+    ================================================== -->
+    @@include("partials/footer.html")
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    @@include("partials/scripts.html")
+
+  </body>
+</html>

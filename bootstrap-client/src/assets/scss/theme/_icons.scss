@@ -1,0 +1,387 @@
+//
+// icons.scss
+// Incline component
+//
+
+.icon {
+
+  // Path
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+
+// Sizes
+
+.icon-2x {
+  font-size: 2em !important;
+}
+
+
+// Offset
+
+.icon-offset {
+
+  path {
+
+    // Disable icon animation in IE
+
+    @media all and (-ms-high-contrast:none) {
+      stroke-dashoffset: 0 !important;
+      animation: none !important;  
+    }
+
+    // Disable icon animation in Edge
+
+    @supports (-ms-ime-align:auto) {
+      stroke-dashoffset: 0 !important;
+      animation: none !important;
+    }
+  }
+}
+
+
+// Person
+
+.icon-person {
+
+  path {
+    stroke-dasharray: $icon-person-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-person-path-length;
+    }
+  }
+}
+
+
+// Businessman
+
+.icon-businessman {
+
+  path {
+    stroke-dasharray: $icon-businessman-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-businessman-path-length;
+    }
+  }
+}
+
+
+// Envelope
+
+.icon-envelope {
+
+  path {
+    stroke-dasharray: $icon-envelope-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-envelope-path-length;
+    }
+  }
+}
+
+
+// Lock
+
+.icon-lock {
+
+  path {
+    stroke-dasharray: $icon-lock-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+    stroke-dashoffset: $icon-lock-path-length;
+  }
+}
+
+
+// Diamond
+
+.icon-diamond {
+
+  path {
+    stroke-dasharray: $icon-diamond-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-diamond-path-length;
+    }
+  }
+}
+
+
+// Layers
+
+.icon-layers {
+
+  path {
+    stroke-dasharray: $icon-layers-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-layers-path-length;
+    }
+  }
+}
+
+
+// Edit
+
+.icon-edit {
+
+  path {
+    stroke-dasharray: $icon-edit-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-edit-path-length;
+    }
+  }
+}
+
+
+// Comment
+
+.icon-comment {
+
+  path {
+    stroke-dasharray: $icon-comment-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-comment-path-length;
+    }
+  }
+}
+
+
+// At
+
+.icon-at {
+
+  path {
+    stroke-dasharray: $icon-at-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-at-path-length;
+    }
+  }
+}
+
+
+// Support
+
+.icon-support {
+
+  path {
+    stroke-dasharray: $icon-support-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-support-path-length;
+    }
+  }
+}
+
+
+// Truck
+// =====
+
+.icon-truck {
+
+  path {
+    stroke-dasharray: $icon-truck-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-truck-path-length;
+    }
+  }
+}
+
+
+// Case
+
+.icon-case {
+
+  path {
+    stroke-dasharray: $icon-case-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-case-path-length;
+    }
+  }
+}
+
+
+// Clock
+
+.icon-clock {
+
+  path {
+    stroke-dasharray: $icon-clock-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-clock-path-length;
+    }
+  }
+}
+
+
+// Cart
+
+.icon-cart {
+
+  path {
+    stroke-dasharray: $icon-cart-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-cart-path-length;
+    }
+  }
+}
+
+
+// Marker
+
+.icon-marker {
+
+  path {
+    stroke-dasharray: $icon-marker-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-marker-path-length;
+    }
+  }
+}
+
+
+// Tick
+
+.icon-tick {
+
+  path {
+    stroke-dasharray: $icon-tick-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-tick-path-length;
+    }
+  }
+}
+
+
+// Building
+
+.icon-building {
+
+  path {
+    stroke-dasharray: $icon-building-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-building-path-length;
+    }
+  }
+}
+
+
+// Camera
+
+.icon-camera {
+
+  path {
+    stroke-dasharray: $icon-camera-path-length;
+  }
+
+  // Offset
+
+  &.icon-offset {
+
+    path {
+      stroke-dashoffset: $icon-camera-path-length;
+    }
+  }
+}

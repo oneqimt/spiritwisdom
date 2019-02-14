@@ -1,0 +1,91 @@
+//
+// dropdowns.scss
+// Extended from Bootstrap
+//
+
+// Menu
+
+.dropdown-menu {
+
+  // Animation
+
+  @if ( $enable-animation ) {
+    opacity: 0;
+
+    // Show
+
+    &.show {
+      animation: $transition-duration-base forwards dropdownFadeIn;
+
+      @keyframes dropdownFadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes dropdownFadeUp {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // List
+
+  > li + li {
+
+    @include media-breakpoint-up(xl) {
+      border-top: 1px solid $dropdown-border-color;
+    }
+  }
+
+  // Submenu
+
+  .dropdown-menu {
+
+    .dropdown-item {
+
+      @include media-breakpoint-down(lg) {
+        padding-left: $dropdown-item-padding-x * 1.5;
+      }
+    }
+  }
+}
+
+
+// Item
+
+.dropdown-item {
+  padding-top: $dropdown-item-padding-y-sm;
+  padding-bottom: $dropdown-item-padding-y-sm;
+  font-size: $dropdown-link-font-size;
+  font-weight: $dropdown-link-font-weight;
+  letter-spacing: $dropdown-link-letter-spacing;
+  text-transform: uppercase;
+  transition: $dropdown-item-transition;
+
+  @include media-breakpoint-up(xl) {
+    padding-top: $dropdown-item-padding-y;
+    padding-bottom: $dropdown-item-padding-y;
+  }
+
+  // Next
+
+  + .dropdown-item {
+
+    @include media-breakpoint-up(xl) {
+      border-top: 1px solid $dropdown-border-color;
+    }
+  }
+
+
+  // Toggle
+
+  &.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

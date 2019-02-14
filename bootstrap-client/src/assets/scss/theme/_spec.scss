@@ -1,0 +1,82 @@
+//
+// spec.scss
+// Incline component
+//
+
+// List
+
+.spec-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.spec-list-item {
+  display: flex;
+  padding: .5rem 0;
+  
+  > span {
+    width: 100%;
+
+    &:first-child,
+    &:last-child {
+      width: auto;
+      white-space: nowrap;
+    }
+
+    // Dots
+
+    &:nth-child(2) {
+      background: {
+        repeat: repeat-x;
+        image: linear-gradient(to right, transparent 90%, #{$text-muted} 90%, #{$text-muted});
+        position: bottom left;
+        size: 10px 1px;
+      };
+    }
+  }
+}
+
+
+// Line
+
+.spec-line {
+
+  @include media-breakpoint-up(md) { 
+
+    // Circle
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 7.5rem; height: 7.5rem;
+      border-radius: 50%;
+      border: 3.25rem solid fade-out($primary, .75);
+      background-color: $primary;
+      background-clip: padding-box;
+      transform: translate(-50%, -50%);
+      z-index: $zindex-dropdown;
+    }
+
+    // Line
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(50% + #{$grid-gutter-width / 2});
+      border-top: 2px solid $primary;
+      transform: translateY(-50%);
+      z-index: $zindex-dropdown;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+
+    // Line
+
+    &:after {
+      width: calc(50% + #{$grid-gutter-width});
+    }
+  }
+}

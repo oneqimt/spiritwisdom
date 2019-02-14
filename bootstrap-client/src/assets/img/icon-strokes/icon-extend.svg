@@ -1,0 +1,5 @@
+<svg class="icon icon-extend" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path transform="translate(3 3)" d="
+		M30 70 L 0 100 M 20 100 H 0 V 80 M30 30 L 0 0 M0 20 V 0 H 20 M70 30 L 100 0 M80 0 H 100 V 20 M70 70 L 100 100 M80 100 H 100 V 80">
+	</path>
+</svg>

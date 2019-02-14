@@ -1,0 +1,129 @@
+//
+// buttons.scss
+// Extended from Bootstrap
+//
+
+.btn {
+  position: relative;
+  font-size: $btn-font-size;
+  line-height: $font-size-base * $input-btn-line-height;
+  letter-spacing: $btn-letter-spacing;
+  text-transform: uppercase;
+
+  // Outline
+
+  &[class*="outline"] {
+    color: $body-color;
+
+    // Dropdown toggle
+
+    &.dropdown-toggle {
+      background-color: transparent;
+    }
+
+    // Hover
+    
+    &:hover, &:focus, &:active, &:active:focus {
+      background-color: transparent;
+    }
+
+    // Contextual classes
+
+    &[class*="primary"] {
+
+      &:hover, &:focus, &:active, &:active:focus {
+        color: $primary;
+      }
+    }
+  }
+
+  // Focus
+  
+  &:focus {
+    box-shadow: $btn-focus-box-shadow !important;
+  }
+
+  // Icons
+
+  > * {
+    line-height: inherit;
+  }
+
+}
+
+
+// Sizing
+
+.btn-lg {
+  line-height: $font-size-base * $btn-line-height-lg;
+}
+
+.btn-sm {
+  line-height: $font-size-base * $btn-line-height-sm;
+}
+
+
+// Circle
+
+.btn-circle {
+  padding-left: $btn-padding-y;
+  padding-right: $btn-padding-y;
+  border-radius: 50%;
+
+  > * {
+    min-width: calc(#{$font-size-base} * #{$btn-line-height} + #{$input-btn-border-width} * 2);
+  }
+
+  // Large
+
+  &.btn-lg {
+    padding-left: $btn-padding-y-lg;
+    padding-right: $btn-padding-y-lg;
+
+    > * {
+min-width: calc(#{$font-size-base} * #{$btn-line-height-lg} + #{$input-btn-border-width} * 2);
+    }
+  }
+  
+  // Small
+
+  &.btn-sm {
+    padding-left: $btn-padding-y-sm;
+    padding-right: $btn-padding-y-sm;
+
+    > * {
+min-width: calc(#{$font-size-base} * #{$btn-line-height-sm} + #{$input-btn-border-width} * 2);
+    }
+  }
+
+}
+
+
+// Link
+
+.btn-link {
+  font-weight: $btn-font-weight;
+  color: $body-color;
+}
+
+
+// Hero
+
+.btn-hero {
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+// Block
+
+@each $size, $value in $grid-breakpoints {
+  .btn-#{$size}-auto {
+
+    @include media-breakpoint-up($size) {
+      width: auto !important;
+    }
+  }
+}

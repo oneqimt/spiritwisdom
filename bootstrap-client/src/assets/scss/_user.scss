@@ -1,0 +1,60 @@
+// 
+// user.scss
+// Use this to write your custom SCSS
+//
+
+.container .jumbotron {
+  border-radius: 12px ;
+  background-color: #91B885;
+}
+
+.myStripe{
+  background-color: #D67171;
+  font-size: large;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  align-content: center;
+}
+
+.myRow{
+ margin-top: 100px;
+}
+
+.breadcrumb{
+  margin-top: 120px;
+}
+
+.breadcrumb-item{
+  font-weight: bold;
+}
+
+.navbar-dark .navbar-brand {
+  //filter: brightness(0) invert(1);
+  content: url("../img/spirit_logo_white.svg");
+  width : 140px;
+  height : 71px;
+}
+
+.navbar-light .navbar-brand{
+  content: url("../img/spirit_logo_black.svg");
+  width : 140px;
+  height : 71px;
+}
+
+.navbar-nav .nav-item-divider {
+  .nav-link {
+    opacity: .50;
+
+    > span {
+      border-left: 2px solid;
+    }
+  }
+}
+
+.icon-phone:before {
+  content: "\e942";
+}
+
+
+
+

@@ -1,0 +1,17 @@
+//
+// variables-blue.scss
+// Blue mode variables
+//
+
+//
+// Color system
+//
+
+$primary: #f5ba4b !default;
+
+$secondary: #3E518C !default;
+$secondary-dark: shade($secondary, 10%);
+
+$theme-colors: (
+  "secondary-dark": $secondary-dark
+);

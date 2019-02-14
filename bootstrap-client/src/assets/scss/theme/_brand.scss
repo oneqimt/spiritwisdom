@@ -1,0 +1,31 @@
+//
+// brand.scss
+// Incline component
+//
+
+.brand-item {
+  display: block;
+  padding: $brand-item-padding;
+  border: 1px solid $brand-item-border-color;
+  text-align: center;
+  font-size: $brand-item-font-size;
+  color: $brand-item-color;
+  transition: $transition-base;
+  transition-property: border-color;
+
+  // Image
+
+  > img {
+    height: $brand-item-font-size; width: auto;
+    max-width: 100%;
+    filter: $brand-item-image-filter;
+  }
+
+  // Hover
+
+  @include hover-focus {
+    text-decoration: none;
+    border-color: $brand-item-hover-border-color;
+    color: $brand-item-color;
+  }
+}

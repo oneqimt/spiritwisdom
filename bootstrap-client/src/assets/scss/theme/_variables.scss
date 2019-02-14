@@ -1,0 +1,549 @@
+//
+// variables.scss
+// Extended from Bootstrap
+//
+
+
+//
+// Bootstrap overrides ===================================
+//
+
+//
+// Color system
+//
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$primary: #f5ba4b !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 200 !default;
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded: false !default;
+$enable-animation: true !default;
+
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+
+$spacers: (
+  0: 0,
+  1:  ($spacer * .25),
+  2:  ($spacer * .50),
+  3:  ($spacer * 1.0),
+  4:  ($spacer * 1.5),
+  5:  ($spacer * 3.0),
+  6:  ($spacer * 4.5),
+  7:  ($spacer * 6.0),
+  8:  ($spacer * 7.5),
+  9:  ($spacer * 9.0),
+  10: ($spacer * 9.5),
+) !default;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-color: $gray-900 !default;
+
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom: 1.5rem !default;
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  xl: 1200px
+) !default;
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-gutter-width: 3rem !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-color: fade-out(black, .9) !default;
+$border-color-light: fade-out(white, .9) !default;
+
+$border-radius: 0 !default;
+
+$box-shadow: 0 25px 100px -5px fade-out(black, .85) !default;
+$box-shadow-dark: 0 25px 100px -5px fade-out(black, .5) !default;
+
+$transition-duration-base: .2s !default;
+$transition-duration-xl: $transition-duration-base * 3 !default;
+$transition-duration-lg: $transition-duration-base * 2 !default;
+$transition-duration-sm: $transition-duration-base * .5 !default;
+
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: 'Objective', sans-serif !default;
+
+$font-size-base: 0.9375rem !default; // 15px
+
+$font-size-lg: 1rem !default;       // 16px
+$font-size-sm: 0.8125rem !default;  // 13px
+$font-size-xs: 0.75rem !default;    // 12px
+$font-size-xxs: 0.6875rem !default; // 11px
+
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 600 !default;
+
+$headings-font-weight: $font-weight-medium !default;
+$headings-line-height: 1.5 !default;
+$headings-color: $body-color !default;
+$headings-letter-spacing: -.05em !default;
+
+$h1-font-size: 34px !default; // 34px
+$h2-font-size: 26px !default; // 26px
+$h3-font-size: 22px !default; // 22px
+$h4-font-size: 18px !default; // 18px
+$h5-font-size: 16px !default; // 16px
+$h6-font-size: 15px !default; // 15px
+
+$h1-font-size-sm: 34px !default;  // 34px
+$h2-font-size-sm: 26px !default;  // 26px
+$h3-font-size-sm: 22px !default;  // 22px
+$h4-font-size-sm: 18px !default;  // 18px
+$h5-font-size-sm: 16px !default;  // 16px
+$h6-font-size-sm: 15px !default;  // 15px
+
+$display3-size: 4.5rem !default;  // 72px
+$display4-size: 3.5rem !default;  // 56px
+
+$display3-size-sm: 3rem !default; // 48px
+$display4-size-sm: 2rem !default; // 36px
+
+$display1-weight: $headings-font-weight !default;
+$display2-weight: $headings-font-weight !default;
+$display3-weight: $headings-font-weight !default;
+$display4-weight: $headings-font-weight !default;
+
+$display-line-height: 1.35 !default;
+
+$line-height-base: 1.75 !default;
+
+$lead-font-size: $font-size-lg !default;
+$lead-font-weight: $font-weight-normal !default;
+$lead-line-height: $line-height-base !default;
+
+$blockquote-font-size: $font-size-lg !default;
+$blockquote-img-size: 3em !default;
+
+$text-zigzag-size: .175em !default;
+$text-zigzag-border-color: $primary !default;
+
+$text-muted: $gray-600 !default;
+
+$text-white-muted: fade-out(white, .35) !default;
+
+$small-font-size: 86.666% !default;
+
+$selection-bg: $primary !default;
+$selection-color: white !default;
+
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y: .75rem !default;
+$input-btn-padding-x: 1.5rem !default;
+
+$input-btn-padding-y-sm: .5rem !default;
+$input-btn-padding-x-sm: 1.25rem !default;
+
+$input-btn-padding-y-lg: 1rem !default;
+$input-btn-padding-x-lg: 1.75rem !default;
+
+$input-btn-focus-box-shadow: none !default;
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-font-size: $font-size-xxs !default;
+$btn-font-weight: $font-weight-medium !default;
+
+$btn-box-shadow: none !default;
+
+$btn-letter-spacing: 0 !default;
+
+
+// Forms
+
+$input-padding-y: $input-btn-padding-y !default;
+$input-padding-x: .75rem !default;
+
+$input-line-height: $btn-font-size * $line-height-base !default;
+
+$input-bg: $gray-100 !default;
+
+$input-border-color: $gray-300 !default;
+
+$input-focus-border-color: $primary !default;
+
+$input-group-addon-color: $gray-600 !default;
+$input-group-addon-bg: $gray-100 !default;
+
+$custom-select-padding-y: $input-padding-y !default;
+$custom-select-padding-x: $input-padding-x !default;
+$custom-select-line-height: $input-line-height !default;
+
+$custom-select-focus-box-shadow: $input-btn-focus-box-shadow !default;
+
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+$dropdown-min-width: 12.5rem !default;
+$dropdown-padding-y: 0 !default;
+
+$dropdown-border-color: fade-out(black, .9) !default;
+$dropdown-box-shadow: none !default;
+
+$dropdown-link-font-size: $font-size-xxs !default;
+$dropdown-link-font-weight: $font-weight-medium !default;
+$dropdown-link-hover-bg: $gray-100 !default;
+$dropdown-link-hover-color: $body-color !default;
+
+$dropdown-link-active-color: $primary !default;
+$dropdown-link-active-bg: transparent !default;
+
+$dropdown-item-padding-y: .75rem !default;
+$dropdown-item-padding-y-sm: .5rem !default;
+$dropdown-item-transition: background-color $transition-duration-sm !default;
+
+$dropdown-link-letter-spacing: 0 !default;
+
+$dropdown-header-color: $body-color !default;
+
+
+// Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+$zindex-preloader: 1080 !default;
+
+
+// Navs
+
+$nav-tabs-border-color: $border-color !default;
+$nav-tabs-link-hover-border-color: $nav-tabs-border-color !default;
+
+$nav-link-padding-y: .5rem !default;
+
+$nav-tabs-border-color: $border-color !default;
+$nav-tabs-link-hover-border-color: $border-color !default;
+$nav-tabs-link-active-color: $body-color !default;
+$nav-tabs-link-active-border-color: $border-color $border-color transparent $border-color !default;
+
+$nav-pills-border-radius: .25rem !default;
+$nav-pills-link-active-color: $body-color !default;
+$nav-pills-link-active-bg: transparent !default;
+
+$nav-link-font-size: $font-size-xxs !default;
+$nav-link-font-weight: $font-weight-medium !default;
+$nav-link-letter-spacing: 0 !default;
+$nav-link-color: $body-color;
+
+
+// Navbar
+
+$navbar-padding-y: 1.25rem !default;
+
+$navbar-nav-link-padding-y: 1rem !default;
+$navbar-nav-link-padding-x: 1rem !default;
+$navbar-nav-link-font-size: $font-size-xs !default;
+$navbar-nav-link-font-weight: $font-weight-medium !default;
+
+$nav-link-height: ($navbar-nav-link-font-size * $line-height-base + $navbar-nav-link-padding-y * 2) !default;
+$navbar-brand-font-size: $font-size-lg !default;
+$navbar-brand-img-size: 1.75rem !default;
+$navbar-brand-height: $navbar-brand-img-size !default;
+$navbar-brand-padding-y: (($nav-link-height - $navbar-brand-height) / 2) !default;
+
+$navbar-dark-color: white !default;
+$navbar-dark-hover-color: $primary !default;
+$navbar-dark-active-color: $navbar-dark-hover-color !default;
+$navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-dark-toggler-border-color: transparent !default;
+$navbar-dark-brand-svg-i-color: $primary !default;
+
+$navbar-light-color: $gray-900 !default;
+$navbar-light-hover-color: $primary !default;
+$navbar-light-active-color: $navbar-light-hover-color !default;
+$navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-light-toggler-border-color: transparent !default;
+$navbar-light-brand-svg-i-color: $primary !default;
+
+$navbar-height: ($nav-link-height +  $navbar-padding-y * 2) !default;
+
+$navbar-nav-link-letter-spacing: 0 !default;
+
+
+// Pagination
+
+$pagination-padding-y: $input-btn-padding-y !default;
+$pagination-padding-x: $input-btn-padding-y !default;
+
+$pagination-padding-y-lg: $input-btn-padding-y-lg !default;
+$pagination-padding-x-lg: $input-btn-padding-y-lg !default;
+
+$pagination-padding-y-sm: $input-btn-padding-y-sm !default;
+$pagination-padding-x-sm: $input-btn-padding-y-sm !default;
+
+$pagination-border-color: $border-color !default;
+
+$pagination-hover-bg: $gray-100 !default;
+
+$pagination-font-size: $font-size-xxs !default;
+$pagination-font-weight: $font-weight-medium !default;
+$pagination-letter-spacing: 0 !default;
+
+
+
+// Cards
+
+$card-spacer-y: 1rem !default;
+$card-spacer-x: 2.5rem 2rem !default;
+
+$card-spacer-y-lg: 1.5rem !default;
+$card-spacer-x-lg: 3.5rem 2.5rem !default;
+
+$card-spacer-y-sm: 1rem !default;
+$card-spacer-x-sm: 2.5rem 1.5rem !default;
+
+$card-border-color: $border-color !default;
+$card-bg: transparent !default;
+
+$card-img-overlay-padding: $card-spacer-x !default;
+
+$card-hover-img-translate: translateY(-.25rem) !default;
+$card-hover-img-box-shadow: 0 1rem 2rem -1rem fade-out(black, .25) !default;
+
+$card-disabled-opacity: .5 !default;
+
+
+// Modals
+
+$modal-backdrop-opacity: .9 !default;
+
+$modal-header-border-width: 0 !default;
+$modal-header-padding: 1rem !default;
+$modal-footer-border-width: 0 !default;
+
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y: 1.5rem !default;
+$alert-padding-x: 1.5rem !default;
+
+$alert-box-shadow: $box-shadow !default;
+
+$alert-border-level: 0 !default;
+
+$alert-fixed-max-width: 40rem !default;
+
+
+// Breadcrumbs
+
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-padding-y: 1.5rem !default;
+
+$breadcrumb-margin-bottom: 0 !default;
+
+$breadcrumb-bg: $gray-800 !default;
+$breadcrumb-divider-color: fade-out(white, .5) !default;
+$breadcrumb-active-color: fade-out(white, .5) !default;
+$breadcrumb-divider: "\f105" !default;
+$breadcrumb-heading-color: white !default;
+$breadcrumb-font-size: $font-size-base * .85 !default;
+
+
+// Sections
+
+$section-padding-y-sm: 5rem !default;
+$section-padding-y: 7.5rem !default;
+
+
+//
+// Theme ===================================
+//
+
+// Slider
+
+$slider-item-gutter-width: $grid-gutter-width / 4 !default;
+
+$slider-nav-size: 2.5rem !default;
+$slider-nav-bg: white !default;
+$slider-nav-color: $body-color !default;
+$slider-nav-font-size: $h4-font-size !default;
+$slider-nav-hover-bg: $primary !default;
+
+
+// Utilities
+
+$bg-overlay-bg: $gray-900 !default;
+$bg-overlay-opacity: .55 !default;
+
+$bg-triangle-dark-bg: $gray-900 !default;
+$bg-triangle-dark-opacity: .01 !default;
+
+$bg-triangle-light-bg: white !default;
+$bg-triangle-light-opacity: .01 !default;
+
+$bg-incline-dark-bg: $gray-900 !default;
+$bg-incline-dark-opacity: .015 !default;
+
+$bg-incline-light-bg: white !default;
+$bg-incline-light-opacity: .05 !default;
+
+$bg-incline-size: 500vmax !default;
+
+
+// Quote
+
+$quote-font-size: $h4-font-size !default;
+$quote-font-size-sm: $font-size-base !default;
+
+$quote-footer-font-size: $font-size-base !default;
+$quote-footer-font-size-sm: $font-size-sm !default;
+
+
+// Stats
+
+$stats-item-val-font-size: $h2-font-size !default;
+
+$stats-item-title-font-size: $font-size-xxs !default;
+$stats-item-title-font-weight: $font-weight-medium !default;
+$stats-item-title-letter-spacing: 0 !default;
+
+
+// Testimonials
+
+$testimonials-item-opacity: .25 !default;
+
+$testimonials-item-inner-padding-sm: 1.5rem !default;
+$testimonials-item-inner-padding: 2.5rem 2rem !default;
+
+
+// Header
+
+// % of its width
+
+$header-img-height: 25% !default;
+$header-img-height-sm: 100% !default;
+
+
+// Brands
+
+$brand-item-padding: .5rem 1.5rem !default;
+$brand-item-font-size: $h1-font-size !default;
+$brand-item-color: $text-muted !default;
+$brand-item-border-color: $border-color !default;
+$brand-item-hover-border-color: $primary !default;
+$brand-item-image-filter: grayscale(0) !default;
+
+
+// Map
+
+// % of its width
+
+$map-height: 25% !default;
+$map-height-sm: 100% !default;
+
+
+// Icons
+
+$icon-person-path-length: 328 !default;
+$icon-businessman-path-length: 490 !default;
+$icon-envelope-path-length: 477 !default;
+$icon-lock-path-length: 441 !default;
+$icon-diamond-path-length: 688 !default;
+$icon-layers-path-length: 514 !default;
+$icon-edit-path-length: 659 !default;
+$icon-comment-path-length: 406 !default;
+$icon-at-path-length: 463 !default;
+$icon-support-path-length: 539 !default;
+$icon-truck-path-length: 582 !default;
+$icon-case-path-length: 510 !default;
+$icon-clock-path-length: 381 !default;
+$icon-cart-path-length: 486 !default;
+$icon-marker-path-length: 335 !default;
+$icon-tick-path-length: 384 !default;
+$icon-building-path-length: 700 !default;
+$icon-camera-path-length: 474 !default;
+
+
+// Sidenav
+
+$sidenav-offset: 2rem !default;
+
+
+// FAQ
+
+$faq-item-padding: 1rem 0 !default;
+
+
+// Animation
+
+$animation-delay: .15s !default;
+$animation-duration: $transition-duration-lg !default;
+$animation-timing-function: ease-in-out !default;
+
+
+// Title
+
+$title-font-size: $font-size-xs !default;
+$title-font-weight: $font-weight-medium !default;
+$title-letter-spacing: 0 !default;
+
+
+// Avatar
+
+$avatar-size: 2rem !default;
+$avatar-size-lg: 2.5rem !default;
+$avatar-size-sm: 1.5rem !default;

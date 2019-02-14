@@ -1,0 +1,46 @@
+//
+// modal.scss
+// Extended from Bootstrap
+//
+
+// Dialog
+
+// Video
+
+.modal-dialog-video {
+  
+  // Content
+
+  .modal-content {
+    background-color: transparent;
+    border: none;
+    color: white;
+    box-shadow: none;
+  }
+
+  // Close
+
+  .close {
+    color: white !important;
+    text-shadow: none;
+  }
+}
+
+// Transform
+
+.modal.fade .modal-dialog {
+  transform: scale(.95);
+  opacity: 0;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+// Body
+
+.modal-body {
+  padding-top: 0;
+}

@@ -1,0 +1,13 @@
+//
+// pagination.scss
+// Extended from Bootstrap
+//
+
+// Link
+
+.page-link {
+  font-size: $pagination-font-size !important;
+  font-weight: $pagination-font-weight;
+  letter-spacing: $pagination-letter-spacing;
+  text-transform: uppercase;
+}

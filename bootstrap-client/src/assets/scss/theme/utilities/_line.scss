@@ -1,0 +1,28 @@
+//
+// line.scss
+// Theme utility
+//
+
+.line {
+  position: absolute;
+  left: 50%;
+  height: $section-padding-y-sm;
+  border-left: 2px solid $primary;
+  transform: translateY(-50%);
+
+  @include media-breakpoint-up(md) {
+    height: $section-padding-y;
+  }
+}
+
+// Top
+
+.line-top {
+  top: 0;
+}
+
+// Bottom
+
+.line-bottom {
+  top: 100%;
+}

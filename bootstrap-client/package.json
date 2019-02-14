@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "name": "bootstrap-client",
+  "version": "1.0.0",
+  "description": "Spirit Wisdom Counseling",
+  "main": "gulpfile.js",
+  "author": "Dennis Miller",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-file-include": "^2.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-npm-dist": "^1.0.2",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-useref-plus": "0.0.8",
+    "gulp-wait": "0.0.2",
+    "run-sequence": "^2.2.1",
+    "stream-combiner2": "^1.1.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.1",
+    "bootstrap": "^4.2.1",
+    "flickity": "^2.2.0",
+    "fullpage.js": "^3.0.4",
+    "gulp-open": "^3.0.1",
+    "highlightjs": "^9.12.0",
+    "jquery": "^3.3.1",
+    "jquery-parallax.js": "^1.5.0",
+    "waypoints": "^4.0.1"
+  },
+  "license": "ISC"
+}

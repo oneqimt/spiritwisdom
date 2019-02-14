@@ -1,0 +1,27 @@
+//
+// alert.scss
+// Extended from Bootstrap
+//
+
+.alert {
+  background-color: white;
+  border-width: 2px 0 0 0;
+  box-shadow: $alert-box-shadow;
+  color: $body-color;
+}
+
+// Fixed
+
+.alert-fixed {
+  position: fixed;
+  top: $navbar-height; left: 50%;
+  width: 100%;
+  max-width: $alert-fixed-max-width;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: $zindex-fixed;
+
+  @include media-breakpoint-up(md) {
+    top: calc(#{$navbar-height} + 1rem);
+  }
+}

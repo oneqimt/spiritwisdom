@@ -1,0 +1,56 @@
+//
+// quote.scss
+// Incline component
+//
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  font-size: $quote-font-size;
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+  }
+
+  // Icon
+
+  &:before {
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    min-width: 2.5em;
+    font-size: $h2-font-size;
+    line-height: $headings-line-height;
+  }
+
+  &:after {
+    content: close-quote;
+    transform: scale(0);
+  }
+}
+
+
+// Blockquote
+
+.quote-blockquote {
+  margin-bottom: 0;
+}
+
+// Footer
+
+.quote-blockquote-footer {
+  display: flex;
+  align-items: center;
+  font-size: $quote-footer-font-size;
+}
+
+
+// Sizes
+
+.quote-sm {
+  font-size: $quote-font-size-sm;
+
+  .quote-blockquote-footer {
+    font-size: $quote-footer-font-size-sm;
+  }
+}

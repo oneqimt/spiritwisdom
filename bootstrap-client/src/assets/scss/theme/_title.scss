@@ -1,0 +1,24 @@
+//
+// title.scss
+// Incline component
+//
+
+// Title
+// =====
+
+.title {
+  font-size: $title-font-size;
+  font-weight: $title-font-weight;
+  letter-spacing: $title-letter-spacing;
+  text-transform: uppercase;
+  
+  // Line
+
+  &:after {
+    content: '';
+    display: block;
+    width: 2rem;
+    margin: 1rem 0 1.5rem;
+    border-top: 2px solid $primary;
+  }
+}

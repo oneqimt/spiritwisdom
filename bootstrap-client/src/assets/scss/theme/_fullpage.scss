@@ -1,0 +1,15 @@
+//
+// fullpage.scss
+// Incline component
+//
+
+.fp-section .section {
+  position: static;
+}
+
+.fp-section:not(:first-child) .section-top {
+
+  @include media-breakpoint-down(sm) {
+    padding-top: $section-padding-y-sm;
+  }
+}

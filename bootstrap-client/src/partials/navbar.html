@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-xl navbar-@@type @@if ( togglable ) { navbar-togglable } fixed-top">
+    <div class="container" >
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="index.html">
+        <!--<img src="assets/img/spirit_logo_white.svg" width="200" height="50" alt="home">-->
+    </a>
+  
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <!--</ul>-->
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item @@if ( page == 'practice.html' ) { active }">
+          <a href="../index.html" class="nav-link">
+            Practice
+          </a>
+        </li>
+
+      <li class="nav-item @@if ( page == 'about.html' ) { active }">
+          <a href="../about.html" class="nav-link">
+              About
+          </a>
+      </li>
+
+          <li class="nav-item @@if ( page == 'contact.html' ) { active }">
+              <a href="../contact.html" class="nav-link">
+                  Contact
+              </a>
+          </li>
+
+          <li class="nav-item @@if ( page == 'faq.html' ) { active }">
+              <a href="../faq.html" class="nav-link">
+                  FAQ
+              </a>
+          </li>
+
+          <li class="nav-item-divider">
+          <span class="nav-link">
+            <span></span>
+          </span>
+          </li>
+          <li class="nav-item" style="margin-top: 12px">
+              <a href="tel:3038420984"><i class="fa fa-phone" aria-hidden="true"></i></a>
+
+          </li>
+
+      </ul>
+
+
+    </div> <!-- / .navbar-collapse  style="font-size: 1em-->
+  
+  </div> <!-- / .container -->    
+</nav>

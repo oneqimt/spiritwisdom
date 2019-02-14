@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.spiritwisdomcounseling'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile ('com.mailjet:mailjet-client:4.1.1')
+    //runtime('mysql:mysql-connector-java')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task copyTask(type: Copy) {
+    from "$projectDir/bootstrap-client/dist"
+    into "$projectDir/src/main/webapp"
+}
+

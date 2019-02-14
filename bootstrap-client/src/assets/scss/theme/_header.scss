@@ -1,0 +1,23 @@
+//
+// header.scss
+// Incline component
+//
+
+.header {
+  position: relative;
+  padding-bottom: $header-img-height-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: $header-img-height;
+  }
+}
+
+
+// Image
+
+.header-img {
+  position: absolute;
+  height: 100%; width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}

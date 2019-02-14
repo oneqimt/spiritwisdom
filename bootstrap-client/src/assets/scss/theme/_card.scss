@@ -1,0 +1,276 @@
+//
+// card.scss
+// Extended from Bootstrap
+//
+
+.card {
+  display: block; // IE 11 fix
+
+  @supports(object-fit: cover) {
+    display: flex;
+  }
+}
+
+// Link
+
+a.card {
+  transition: $transition-base;
+  transition-property: border-color;
+
+  @include hover-focus {
+    border-color: $primary;
+    text-decoration: none;
+  }
+
+  // Disabled
+
+  &.disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
+}
+
+
+// Stretch
+
+.card-stretch {
+
+  @include media-breakpoint-up(md) {
+    height: 100%;
+  }
+
+  // Body
+
+  .card-body {
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: center;
+  }
+}
+
+
+// Tall
+
+.card-tall {
+  padding-top: 50%;
+}
+
+
+// Active
+
+.card-active {
+  border-top: $border-width * 2 solid $primary;
+}
+
+
+// Standout
+
+.card-standout {
+
+  @include media-breakpoint-up(md) {
+    transform: scale(1.05);
+    transform-origin: center center;
+    z-index: $zindex-popover;
+
+    // Body
+
+    .card-body {
+      transform: scale(0.95);
+    }  
+  }
+}
+
+
+// Image
+
+.card-img {
+
+  // Links
+
+  &-top, &-bottom {
+
+    @at-root a.card #{&} {
+      position: relative;
+      transition: $transition-base;
+      backface-visibility: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        box-shadow: $card-hover-img-box-shadow;
+        opacity: 0;
+        transition: inherit;
+      }
+    }
+
+    @at-root a.card:hover #{&} {
+      transform: $card-hover-img-translate;
+      
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Waiting
+
+  &-waiting {
+    background-color: $gray-400;
+
+    &:after {
+      content: '';
+      position: relative;
+      display: block;
+      width: 100%; height: 100%;
+      padding-bottom: 61%;
+    }
+
+    > [class*="icon"] {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: $text-muted;
+    }
+  }
+}
+
+
+// Body
+
+.card-body {
+  position: relative;
+}
+
+
+// Order
+
+.card-order {
+  margin-bottom: $card-spacer-y;
+  
+  > span {
+    display: inline-block;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  }
+}
+
+
+// Icon
+
+.card-icon {
+  margin-bottom: $card-spacer-y;
+  font-size: 2em;
+}
+
+
+// Text
+
+.card-text {
+  margin-bottom: $card-spacer-y;
+}
+
+
+// Sizing
+
+.card-lg {
+
+  // Body
+
+  .card-body {
+    padding: $card-spacer-x-lg;
+  }
+
+  // Title
+
+  .card-title {
+    margin-bottom: $card-spacer-y-lg;
+  }
+
+  // Order
+
+  .card-order {
+    margin-bottom: $card-spacer-y-lg;
+  }
+
+  // Icon
+
+  .card-icon {
+    margin-bottom: $card-spacer-y-lg;
+  }
+
+  // Text
+
+  .card-text {
+    margin-bottom: $card-spacer-y-lg;
+  }
+}
+
+
+.card-sm {
+
+  // Body
+
+  .card-body {
+    padding: $card-spacer-x-sm;
+  }
+
+  // Title
+
+  .card-title {
+    margin-bottom: $card-spacer-y-sm;
+  }
+
+  // Order
+
+  .card-order {
+    margin-bottom: $card-spacer-y-sm;
+  }
+
+  // Icon
+
+  .card-icon {
+    margin-bottom: $card-spacer-y-sm;
+  }
+
+  // Text
+
+  .card-text {
+    margin-bottom: $card-spacer-y-sm;
+  }
+}
+
+
+// Add
+
+.card-add {
+  position: absolute;
+  top: $card-spacer-y; right: $card-spacer-y;
+
+  @include media-breakpoint-up(md) {
+    opacity: 0;
+    transform: translateX(-50%) rotate(-180deg);
+    transition: $transition-base;
+
+    @include hover-focus {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+}
+
+.card {
+
+  @include hover-focus {
+    
+    // Can be placed after the card due to we cannot
+    // nest a `button` inside an `a` tag
+
+    .card-add, + .card-add {
+
+      @include media-breakpoint-up(md) {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+  }
+}

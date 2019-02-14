@@ -1,0 +1,21 @@
+//
+// map.scss
+// Incline component
+//
+
+.map {
+  position: relative;
+  padding-bottom: $map-height-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: $map-height;
+  }
+}
+
+
+// Container
+
+.map-container {
+  position: absolute !important;
+  top: 0; bottom: 0; left: 0; right: 0;
+}

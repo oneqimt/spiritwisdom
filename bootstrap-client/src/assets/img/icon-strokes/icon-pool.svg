@@ -1,0 +1,5 @@
+<svg class="icon icon-pool" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path transform="translate(3 3)" d="
+		M0 90 A 5 5 0 0 0 20 90 A 5 5 0 0 0 40 90 A 5 5 0 0 0 60 90 A 5 5 0 0 0 80 90 A 5 5 0 0 0 100 90 M0 70 A 5 5 0 0 0 20 70 A 5 5 0 0 0 40 70 A 5 5 0 0 0 60 70 A 5 5 0 0 0 80 70 A 5 5 0 0 0 100 70 M20 60 V 10 A 10 10 0 0 1 30 0 M80 60 V 10 A 10 10 0 0 1 90 0 M20 50 H 80 M20 35 H 80 M20 20 H 80">
+	</path>
+</svg>

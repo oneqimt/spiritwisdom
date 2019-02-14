@@ -1,0 +1,195 @@
+//
+// images.scss
+// Extended from Bootstrap
+//
+
+// Effect
+
+.img-effect {
+  position: relative;
+  
+  // Image
+
+  > img {
+    position: relative;
+    box-shadow: $box-shadow;
+    z-index: 1;
+  }
+}
+
+
+// Solid
+
+.img-effect-solid {
+  padding-left: 20%;
+  padding-right: 10%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 35%; bottom: 10%;
+    left: 0; right: 0;
+    background-color: tint($primary, 20%);
+  }
+}
+
+
+// Border
+
+.img-effect-border {
+  padding-left: 10%;
+  padding-right: 20%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 75%; bottom: -10%;
+    left: 35%; right: 10%;
+    background-color: tint($primary, 20%);
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: -10%; bottom: 75%;
+    left: 0; right: 55%;
+    border: 2px solid tint($primary, 20%);
+  }
+}
+
+
+// Info
+
+.img-effect-info {
+
+  @include media-breakpoint-up(md) {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 10%;  
+  }
+
+  // Popup
+
+  &-popup {
+    margin-bottom: $paragraph-margin-bottom;
+    padding: 2rem $grid-gutter-width / 2;
+    border-radius: .25rem;
+    background-color: $primary;
+    text-align: center;
+    color: white;
+    box-shadow: $box-shadow;
+    z-index: 2;
+
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 50%; height: auto;
+      margin-bottom: 0;
+    }
+
+    // Icon
+
+    &-icon {
+      $size: 3rem;
+      width: $size; height: $size;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background-color: fade-out(black, .95);
+      border-radius: 50%;
+    }
+  }
+}
+
+
+// Dotted
+
+.img-effect-dotted {
+  padding: 10% 15% 0 15%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 50%; left: 50%;
+    background-image: 
+        str-replace(url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='15' fill='#{$primary}'></circle></svg>"), "#", "%23");
+    background-size: .5rem;
+  }
+}
+
+
+// Incline
+
+.img-incline {
+  clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+
+.img-incline-left {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 5% 100%);
+}
+
+
+// Cover
+
+.img-cover {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.img-cover-top {
+  object-position: center top;
+}
+
+.img-cover-right {
+  object-position: right center;
+}
+
+.img-cover-bottom {
+  object-position: center bottom;
+}
+
+.img-cover-left {
+  object-position: left center;
+}
+
+
+
+// Half
+
+.img-half {
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    width: 50vw; height: 100%;
+    margin-left: -($grid-gutter-width / 2);
+  }
+}
+
+.img-half-left {
+  
+  @include media-breakpoint-up(md) {
+    margin-left: calc(100% - 50vw + #{$grid-gutter-width / 2});
+  }
+}
+
+.img-half .img-cover {
+  position: absolute;
+
+  @include media-breakpoint-down(sm) {
+    position: relative;
+    max-width: 100%; height: auto;
+  }
+}
+
+
+// Square
+
+.img-square {
+  position: relative;
+  padding-bottom: 100%;
+}
+
+.img-square .img-cover {
+  position: absolute;
+}

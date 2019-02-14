@@ -1,0 +1,77 @@
+//
+// type.scss
+// Extended from Bootstrap
+//
+
+// Font weight
+
+.font-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+
+// Sizing
+
+.text-xs {
+  font-size: $font-size-xs !important;
+}
+
+.text-sm {
+  font-size: $font-size-sm !important;
+}
+
+.text-lg {
+  font-size: $font-size-lg !important;
+}
+
+
+// Colors
+
+.text-white.text-muted {
+  color: $text-white-muted !important;
+}
+
+
+// Vertical
+
+.text-vertical {
+  position: relative;
+  transform-origin: right bottom;
+
+  @include media-breakpoint-up(md) {
+    transform: rotate(-90deg) translateX(50%) translateX(3rem);
+    white-space: nowrap;  
+  }
+
+  > span {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%; right: calc(100% + 1rem);
+      border-top: 2px solid;
+      width: 2rem;
+      transform: translateY(50%);
+    }
+  }
+}
+
+
+// Zigzag
+
+.text-zigzag {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: $primary;
+}
+
+
+// No underline
+
+.text-nounderline {
+
+  @include hover-focus {
+    text-decoration: none !important;
+  }
+}

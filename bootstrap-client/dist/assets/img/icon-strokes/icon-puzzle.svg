@@ -1,0 +1,5 @@
+<svg class="icon icon-puzzle" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path transform="translate(3 3)" d="
+		M20 100 V 70 H 10 A 10 10 0 0 1 10 50 H 20 V 20 H 50 V 10 A 10 10 0 0 1 70 10 V 20 H 100 V 50 H 90 A 10 10 0 0 0 90 70 H 100 V 100 H 20">
+	</path>
+</svg>

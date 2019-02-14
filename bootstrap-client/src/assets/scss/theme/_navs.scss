@@ -1,0 +1,68 @@
+//
+// nav.scss
+// Extended from Bootstrap
+//
+
+.nav .nav-link {
+  position: relative;
+  padding: $input-btn-padding-y $input-btn-padding-x;
+  font-size: $nav-link-font-size;
+  font-weight: $nav-link-font-weight;
+  letter-spacing: $nav-link-letter-spacing;
+  text-transform: uppercase;
+  color: $nav-link-color;
+}
+
+
+// Pills
+
+.nav-pills .nav-link {
+
+  // Underline
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: $input-btn-padding-x; bottom: 0; left: $input-btn-padding-x;
+    border-top: $border-width * 3 solid $primary;
+    opacity: 0;
+    transform: translateY(.25rem);
+    transition: $transition-base;
+  }
+
+  // Active
+
+  &.active {
+
+    &::before {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+// Tabs
+
+.nav-tabs .nav-link {
+  
+  &:not(.active) {
+
+    @include hover-focus {
+      border-color: $light $light $nav-tabs-border-color $light;
+      background-color: $light;
+    }
+  }
+}
+
+
+// Overflow
+
+.nav-overflow {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

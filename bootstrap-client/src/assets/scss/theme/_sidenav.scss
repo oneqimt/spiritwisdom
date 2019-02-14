@@ -1,0 +1,14 @@
+//
+// sidenav.scss
+// Incline component
+//
+
+.sidenav {
+  
+  @supports(position: sticky) {
+    position: sticky;
+    top: $navbar-height + $sidenav-offset;
+    max-height: calc(100vh - #{$navbar-height} - #{$sidenav-offset} * 2);
+    overflow-y: auto;
+  }
+}

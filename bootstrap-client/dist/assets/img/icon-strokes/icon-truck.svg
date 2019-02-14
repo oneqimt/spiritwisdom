@@ -1,0 +1,5 @@
+<svg class="icon icon-truck" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path transform="translate(3 3)" d="
+		M10 80 V 60 H 70 V 40 H 90 A 10 10 0 0 1 100 50 V 80 H 95 A 10 10 0 0 0 75 80 H 70 H 40 A 10 10 0 0 0 20 80 H 10 M20 80 A 10 10 0 0 0 40 80 M75 80 A 10 10 0 0 0 95 80 M0 50 V 30 H 20 V 50 H 0 M10 20 V 10 H 20 V 20 H 10 M30 50 V 20 H 60 V 50 Z">
+	</path>
+</svg>

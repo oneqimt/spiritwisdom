@@ -1,0 +1,199 @@
+//
+// navbar.scss
+// Extended from Bootstrap
+//
+
+.navbar {
+
+  // Background
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: white;
+    border-bottom: 1px solid $border-color;
+    opacity: 0;
+    transition: $transition-fade;
+    z-index: -1;
+  }
+}
+
+
+// Dark
+
+.navbar-dark {
+  color: $navbar-dark-color;
+
+  // Underline
+
+  > .container {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -$navbar-padding-y; left: 0; right: 0;
+      border-top: 1px solid $border-color-light;
+    }
+  }
+
+  // Brand
+
+  .navbar-brand-svg-i {
+    color: $navbar-dark-brand-svg-i-color;
+  }
+}
+
+
+// Light
+
+.navbar-light {
+  color: $navbar-light-color;
+
+  &:before {
+    opacity: 1;
+  }
+
+  // Brand
+
+  .navbar-brand-svg-i {
+    color: $navbar-light-brand-svg-i-color;
+  }
+}
+
+
+// Brand
+
+.navbar-brand {
+  line-height: $navbar-brand-img-size;
+  font-weight: $font-weight-medium;
+  color: inherit !important;
+}
+
+// SVG
+
+.navbar-brand-svg {
+  height: $navbar-brand-img-size;
+  width: auto;
+
+  // We need to define the width explicitely instead of 
+  // using the 'auto' value because of the IE rendering issues
+  width: ($navbar-brand-img-size * 235 / 80);
+}
+
+// Image
+
+.navbar-brand-img {
+  height: $navbar-brand-img-size;
+  width: auto;
+}
+
+
+// Nav
+
+// Link
+
+.navbar-nav .nav-link {
+  position: relative;
+  padding-top: $navbar-nav-link-padding-y;
+  padding-bottom: $navbar-nav-link-padding-y;
+  font-size: $navbar-nav-link-font-size;
+  font-weight: $navbar-nav-link-font-weight;
+  letter-spacing: $navbar-nav-link-letter-spacing;
+  text-transform: uppercase;
+  transition: $transition-base;
+  transition-property: color;
+  
+  @include media-breakpoint-up(xl) {
+
+    &:before {
+      display: none;
+      content: '';
+      position: absolute;
+      bottom: calc(-#{$navbar-padding-y});
+      left: $navbar-nav-link-padding-x;
+      right: $navbar-nav-link-padding-x;
+      border-top: $border-width * 3 solid $primary;
+    }
+
+    @include hover-focus {
+      outline: none;
+    }
+  }
+
+  // Active
+  
+  &.active {
+    
+    @include media-breakpoint-up(xl) {
+
+      &:before {
+        display: block;
+      }
+    }
+  }
+}
+
+// Item
+
+.navbar-nav .nav-item {
+
+  // Active
+
+  &.active {
+
+    > .nav-link {
+
+      @include media-breakpoint-up(xl) {
+
+        &:before {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Dropdown
+
+.navbar-nav .dropdown-menu {
+
+  @include media-breakpoint-down(lg) {
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;
+  }
+
+  @include media-breakpoint-up(xl) {
+
+    @if ( $enable-animation ) {
+      transform: translateY(.5rem);
+      opacity: 0;
+
+      // Show
+
+      &.show {
+        animation-name: dropdownFadeUp;
+      }
+    }
+  }
+}
+
+// Divider
+
+.navbar-nav .nav-item-divider {
+  display: none;
+
+  @include media-breakpoint-up(xl) {
+    display: block;
+  }
+  
+  .nav-link {
+    opacity: .25;
+    
+    > span {
+      border-left: 1px solid;
+    }
+  }
+}

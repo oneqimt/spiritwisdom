@@ -1,0 +1,24 @@
+//
+// footer.scss
+// Incline component
+//
+
+// Brand
+
+// SVG
+
+.footer-brand-svg {
+  height: $navbar-brand-height;
+  width: auto;
+
+  // We need to define the width explicitely instead of 
+  // using the 'auto' value because of the IE rendering issues
+  width: ($navbar-brand-height * 235 / 80);
+}
+
+// Image
+
+.footer-brand-img {
+  height: $navbar-brand-height;
+  width: auto;
+}
