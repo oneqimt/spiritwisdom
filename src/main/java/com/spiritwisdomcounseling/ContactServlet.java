@@ -33,7 +33,6 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
         // LOAD BASELINE DATA first
         InputStream resourceAsStream = ContactServlet.class.getResourceAsStream("/baseline.json"); // works!
         if (resourceAsStream != null){
-            System.out.println("BASLINE is not NULL!!!");
             InputStreamReader streamReader = new InputStreamReader(resourceAsStream, StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(streamReader);
             StringBuilder sb = new StringBuilder();
