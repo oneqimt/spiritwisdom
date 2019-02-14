@@ -31,7 +31,6 @@ public class EmailUtil {
 
         Map<String, String> map = new HashMap<>();
 
-        System.out.println("In EmailUtil.sendEmail()" +" "+"PUBLIC KEY is: "+" "+MJ_APIKEY_PUBLIC +" "+"PRIVATE KEY is: "+" "+MJ_APIKEY_PRIVATE);
         MailjetClient client;
         MailjetRequest request;
         MailjetResponse response;
