@@ -19,6 +19,7 @@ public class SecurityUtil {
         if(instance == null){
             instance = new SecurityUtil();
         }
+        //
 
         return instance;
     }
