@@ -127,12 +127,13 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             contact.setReferral(referralStr);
 
             // Send email to customer
-            Map<String, String> map = EmailUtil.sendEmail(contact);
+            Map<String, String> map = EmailUtil.sendContactEmail(contact);
             for(Map.Entry entry : map.entrySet()){
                 System.out.println("KEY is: "+" "+entry.getKey());
                 System.out.println("VALUE is: "+" "+entry.getValue());
             }
             // TODO send email to Genevieve
+            EmailUtil.sendAdminEmail(contact);
 
 
             // redirect contact to home

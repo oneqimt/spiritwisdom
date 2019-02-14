@@ -27,7 +27,7 @@ public class EmailUtil {
 
     }
 
-    public static Map<String, String> sendEmail(Contact contact){
+    public static Map<String, String> sendContactEmail(Contact contact){
 
         Map<String, String> map = new HashMap<>();
 
@@ -79,6 +79,12 @@ public class EmailUtil {
             e.printStackTrace();
         }
         return null;
+
+    }
+
+    public static void sendAdminEmail(Contact contact){
+
+        System.out.println("TIME TO SEND TO GENNY!");
 
     }
 }
