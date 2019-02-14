@@ -82,7 +82,9 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             System.out.println("COMMENTS: "+comments +" "+"REFERRAL: "+referral);
 
             int referralnumber = Integer.parseInt(referral);
+            // testing comments
             //TODO create table for this
+
             String referralStr = "";
             switch (referralnumber){
                 case 0:
