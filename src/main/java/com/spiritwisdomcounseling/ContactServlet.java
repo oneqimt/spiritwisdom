@@ -27,7 +27,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("IN DO POST");
+
         Contact contact = new Contact();
 
         // LOAD BASELINE DATA first
