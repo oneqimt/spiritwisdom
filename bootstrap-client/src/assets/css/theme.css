@@ -16097,6 +16097,12 @@ h1,
     background-color: #167760;
 }
 
+.practiceSection
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .breadcrumb
 {
     margin-top: 120px;
