@@ -126,18 +126,26 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
 
             contact.setReferral(referralStr);
 
+            boolean isValid = false;
+
             // Send email to customer
             Map<String, String> map = EmailUtil.sendContactEmail(contact);
             for(Map.Entry entry : map.entrySet()){
                 System.out.println("KEY is: "+" "+entry.getKey());
                 System.out.println("VALUE is: "+" "+entry.getValue());
+                String val = entry.getValue().toString();
+                if (val.equalsIgnoreCase("success")){
+                    isValid  = true;
+                }
             }
-            // TODO send email to Genevieve
-            EmailUtil.sendAdminEmail(contact);
+            // Send email to Genevieve
+            if(isValid){
+                EmailUtil.sendAdminEmail(contact);
+            }
 
 
             // redirect contact to home
-            response.sendRedirect(request.getContextPath()+"/index.html");
+            response.sendRedirect(request.getContextPath()+"/");
 
 
         }
