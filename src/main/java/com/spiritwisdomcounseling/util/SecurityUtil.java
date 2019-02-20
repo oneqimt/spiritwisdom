@@ -11,6 +11,8 @@ public class SecurityUtil {
     private String username;
     private String password;
     private String driver;
+    private String mj_private;
+    private String mj_public;
 
     private SecurityUtil() {
     }
@@ -54,5 +56,21 @@ public class SecurityUtil {
 
     public void setDriver(String driver) {
         this.driver = driver;
+    }
+
+    public String getMj_private() {
+        return mj_private;
+    }
+
+    public void setMj_private(String mj_private) {
+        this.mj_private = mj_private;
+    }
+
+    public String getMj_public() {
+        return mj_public;
+    }
+
+    public void setMj_public(String mj_public) {
+        this.mj_public = mj_public;
     }
 }

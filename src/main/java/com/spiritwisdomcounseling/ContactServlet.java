@@ -46,14 +46,20 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                 String username = (String)baseline.get("username");
                 String password = (String)baseline.get("password");
                 String driver = (String)baseline.get("driver");
+                String mj_private = (String)baseline.get("MJ_APIKEY_PRIVATE");
+                String mj_public = (String)baseline.get("MJ_APIKEY_PUBLIC");
                 System.out.println("HOST : " +" "+host);
                 System.out.println("DBUSERNAME : " +" "+username);
                 System.out.println("DBPASSWORD : " +" "+password);
                 System.out.println("DRIVER : " +" "+driver);
+                System.out.println("MJ PRIVATE : "+" "+mj_private);
+                System.out.println("MJ PUBLIC :" +" "+mj_public);
                 SecurityUtil.getInstance().setDriver(driver);
                 SecurityUtil.getInstance().setHost(host);
                 SecurityUtil.getInstance().setPassword(password);
                 SecurityUtil.getInstance().setUsername(username);
+                SecurityUtil.getInstance().setMj_private(mj_private);
+                SecurityUtil.getInstance().setMj_public(mj_public);
             }catch(ParseException e){
                 e.printStackTrace();
             }

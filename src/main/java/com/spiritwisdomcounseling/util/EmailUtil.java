@@ -20,8 +20,8 @@ import java.util.Map;
  */
 public class EmailUtil {
 
-    public static final String MJ_APIKEY_PUBLIC =  System.getenv("MJ_APIKEY_PUBLIC");
-    public static final String MJ_APIKEY_PRIVATE =  System.getenv("MJ_APIKEY_PRIVATE");
+    /*public static final String MJ_APIKEY_PUBLIC =  System.getenv("MJ_APIKEY_PUBLIC");
+    public static final String MJ_APIKEY_PRIVATE =  System.getenv("MJ_APIKEY_PRIVATE");*/
 
     private EmailUtil(){
 
@@ -30,6 +30,8 @@ public class EmailUtil {
     public static Map<String, String> sendContactEmail(Contact contact){
 
         Map<String, String> map = new HashMap<>();
+        String mjPrivate = SecurityUtil.getInstance().getMj_private();
+        String mjPublic = SecurityUtil.getInstance().getMj_public();
 
         MailjetClient client;
         MailjetRequest request;
@@ -37,7 +39,7 @@ public class EmailUtil {
 
         String fullname = contact.getFirstName()+" "+contact.getLastName();
 
-        client = new MailjetClient(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE, new ClientOptions("v3.1"));
+        client = new MailjetClient(mjPublic, mjPrivate, new ClientOptions("v3.1"));
 
         request = new MailjetRequest(Emailv31.resource)
                 .property(Emailv31.MESSAGES, new JSONArray()
@@ -66,8 +68,11 @@ public class EmailUtil {
             System.out.println(response.getData());
             JSONArray successarr = response.getData();
             JSONObject successobj = successarr.getJSONObject(0);
+            if(successobj != null){
+                map.put("Status", successobj.getString("Status"));
+            }
 
-            map.put("Status", successobj.getString("Status"));
+
             // add any other props here
 
             return map;
@@ -87,6 +92,9 @@ public class EmailUtil {
         adminContact.setLastName("Miller");
         adminContact.setEmail("spiritwisdomcounseling@gmail.com");
 
+        String mjPrivate = SecurityUtil.getInstance().getMj_private();
+        String mjPublic = SecurityUtil.getInstance().getMj_public();
+
         String fullname = contact.getFirstName()+" "+contact.getLastName();
 
         System.out.println("TIME TO SEND TO GENNY!");
@@ -98,7 +106,7 @@ public class EmailUtil {
         MailjetResponse response;
 
 
-        client = new MailjetClient(MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE, new ClientOptions("v3.1"));
+        client = new MailjetClient(mjPublic, mjPrivate, new ClientOptions("v3.1"));
 
         request = new MailjetRequest(Emailv31.resource)
                 .property(Emailv31.MESSAGES, new JSONArray()
@@ -133,7 +141,10 @@ public class EmailUtil {
             JSONArray successarr = response.getData();
             JSONObject successobj = successarr.getJSONObject(0);
 
-            map.put("Status", successobj.getString("Status"));
+            if(successobj != null){
+                map.put("Status", successobj.getString("Status"));
+            }
+
             // add any other props here
 
             return map;
