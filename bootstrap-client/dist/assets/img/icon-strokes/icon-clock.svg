@@ -1,0 +1,5 @@
+<svg class="icon icon-clock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path transform="translate(3 3)" d="
+		M0 50 A 50 50 0 0 1 15 15 M33 4 A 50 50 0 0 1 50 0 A 50 50 0 0 1 50 100 A 50 50 0 0 1 0 50 M50 50 V 20 M50 50 L 70 70 M0 15 H 15 V 30">
+	</path>
+</svg>

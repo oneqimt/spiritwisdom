@@ -36,7 +36,6 @@ src/main/resources/baseline.json
 src/main/webapp/assets/
 src/main/webapp/**/*.html
 
-bootstrap-client/dist/
 
 
 
