@@ -37,6 +37,7 @@
           // Loop over them and prevent submission
           var validation = Array.prototype.filter.call(forms, function(form) {
             form.addEventListener('submit', function(event) {
+
               if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -46,6 +47,93 @@
           });
         }, false);
       })();
+    </script>
+
+    <script>
+
+      function submitUserForm() {
+        console.log('IN SUBMIT USER FORM');
+
+
+        /*var forms = document.getElementsByClassName('needs-validation');
+        var isvalid = true;
+
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false){
+              isvalid = false;
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated')
+          })
+        });*/
+
+        //var form = document.querySelector('#contact-form');
+        //inquiryCall(form)
+
+        var response = grecaptcha.getResponse();
+        if(response.length == 0) {
+          document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Needed to check for robots.</span>';
+          alert('Please let us know that you are not a robot');
+          grecaptcha.reset();
+          return false;
+        }else{
+          var form = document.querySelector('#contact-form');
+          inquiryCall(form);
+          return true;
+        }
+
+      }
+
+      function inquiryCall(form){
+
+        console.log(form.getAttribute('method'));
+        console.log(form.getAttribute('action'));
+
+        var data = $(form).serialize();
+
+        console.log("DATA FORM is:"+" "+data.toString());
+        var url = "contact";
+
+        /*$.ajax({
+          type: "POST",
+          url: url,
+          data: $(this).serialize(),
+          success: function (data) {
+            // nothing coming back
+            console.log(data.message);
+            // Show a confirmation
+           /!* var event = new CustomEvent('alert.show', {'detail': {
+                type: 'success',
+                message: data.msg
+              }});
+
+            window.dispatchEvent(event);*!/
+
+            // Reset the form
+            form.reset();
+            grecaptcha.reset();
+            /!*var messageAlert = 'alert-' + data.type;
+            var messageText = data.message;
+
+            var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable">' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+            if (messageAlert && messageText) {
+              $('#contact-form').find('.messages').html(alertBox);
+              $('#contact-form')[0].reset();
+              grecaptcha.reset();
+            }*!/
+          }
+        });*/
+
+      }
+
+      function verifyCallback(response) {
+        document.getElementById('g-recaptcha-error').innerHTML = '';
+        console.log( 'g-recaptcha-response: ' + response );
+      }
+
     </script>
 
 
@@ -192,8 +280,15 @@
               Please send me an email because whatever...etc...
             </p>
 
-            <!-- Form add if want novalidate   class="needs-validation"-->
-            <form class="needs-validation" novalidate>
+            <!-- Form add if want novalidate   class="needs-validation"    -->
+            <form id="contact-form"
+                  name="contact-form"
+                  onsubmit="return submitUserForm();"
+                  class="needs-validation"
+                  method="post"
+                  action="contact"
+                  novalidate="">
+              <div class="messages"></div>
             <div class="form-row">
               <div class="form-group col-md-6">
 
@@ -305,11 +400,27 @@
               </div>
 
             </div>
-            <div class="form-row">
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <!--RECAPTCHA  data-callback="verifyCallback"
+                       data-expired-callback="expiredCallback"-->
+                  <div id="captchaId" class="g-recaptcha" data-sitekey="6LfRzJIUAAAAAN9eXPdFwhe5TNttJD2DT7Bnx4zG">
+                  </div>
+                  <div id="g-recaptcha-error"></div>
+
+                </div>
+
+              </div>
+
+
+
+
+              <div class="form-row">
               <div class="col-12">
 
                 <!-- Submit formaction="contact" formmethod="post" -->
-                <button type="submit" class="btn btn-outline-primary" formaction="contact" formmethod="post">
+                <button type="submit" class="btn btn-outline-primary">
                   Send message
                 </button>
 
@@ -529,6 +640,8 @@
 
     <!-- Theme JS -->
     <script src="assets/js/theme.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
   </body>
 </html>

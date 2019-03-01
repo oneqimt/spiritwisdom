@@ -13,6 +13,7 @@ public class SecurityUtil {
     private String driver;
     private String mj_private;
     private String mj_public;
+    private String recaptchaSecret;
 
     private SecurityUtil() {
     }
@@ -72,5 +73,13 @@ public class SecurityUtil {
 
     public void setMj_public(String mj_public) {
         this.mj_public = mj_public;
+    }
+
+    public String getRecaptchaSecret() {
+        return recaptchaSecret;
+    }
+
+    public void setRecaptchaSecret(String recaptchaSecret) {
+        this.recaptchaSecret = recaptchaSecret;
     }
 }

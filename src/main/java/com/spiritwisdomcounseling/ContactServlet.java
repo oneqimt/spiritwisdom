@@ -2,6 +2,7 @@ package com.spiritwisdomcounseling;
 
 import com.spiritwisdomcounseling.model.Contact;
 import com.spiritwisdomcounseling.util.EmailUtil;
+import com.spiritwisdomcounseling.util.RecaptchaUtil;
 import com.spiritwisdomcounseling.util.SecurityUtil;
 
 import org.json.simple.JSONObject;
@@ -29,42 +30,46 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
 
 
         Contact contact = new Contact();
+        if (SecurityUtil.getInstance().getRecaptchaSecret() == null){
+            // LOAD BASELINE DATA first
+            InputStream resourceAsStream = ContactServlet.class.getResourceAsStream("/baseline.json");
+            if (resourceAsStream != null) {
+                InputStreamReader streamReader = new InputStreamReader(resourceAsStream, StandardCharsets.UTF_8);
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder sb = new StringBuilder();
+                for (String line; (line = reader.readLine()) != null; ) {
+                    sb.append(line);
+                }
+                JSONParser parser = new JSONParser();
+                try {
+                    JSONObject baseline = (JSONObject) parser.parse(sb.toString());
+                    String host = (String) baseline.get("host");
+                    String username = (String) baseline.get("username");
+                    String password = (String) baseline.get("password");
+                    String driver = (String) baseline.get("driver");
+                    String mj_private = (String) baseline.get("MJ_APIKEY_PRIVATE");
+                    String mj_public = (String) baseline.get("MJ_APIKEY_PUBLIC");
+                    String recaptcha = (String) baseline.get("RECAPTCHA_SECRET_KEY");
+                    System.out.println("HOST : " + " " + host);
+                    System.out.println("DBUSERNAME : " + " " + username);
+                    System.out.println("DBPASSWORD : " + " " + password);
+                    System.out.println("DRIVER : " + " " + driver);
+                    System.out.println("MJ PRIVATE : " + " " + mj_private);
+                    System.out.println("MJ PUBLIC :" + " " + mj_public);
+                    System.out.println("RECAPTCHA : " + " " + recaptcha);
+                    SecurityUtil.getInstance().setDriver(driver);
+                    SecurityUtil.getInstance().setHost(host);
+                    SecurityUtil.getInstance().setPassword(password);
+                    SecurityUtil.getInstance().setUsername(username);
+                    SecurityUtil.getInstance().setMj_private(mj_private);
+                    SecurityUtil.getInstance().setMj_public(mj_public);
+                    SecurityUtil.getInstance().setRecaptchaSecret(recaptcha);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-        // LOAD BASELINE DATA first
-        InputStream resourceAsStream = ContactServlet.class.getResourceAsStream("/baseline.json"); // works!
-        if (resourceAsStream != null){
-            InputStreamReader streamReader = new InputStreamReader(resourceAsStream, StandardCharsets.UTF_8);
-            BufferedReader reader = new BufferedReader(streamReader);
-            StringBuilder sb = new StringBuilder();
-            for (String line; (line = reader.readLine()) != null;) {
-                sb.append(line);
             }
-            JSONParser parser = new JSONParser();
-            try{
-                JSONObject baseline = (JSONObject)parser.parse(sb.toString());
-                String host = (String)baseline.get("host");
-                String username = (String)baseline.get("username");
-                String password = (String)baseline.get("password");
-                String driver = (String)baseline.get("driver");
-                String mj_private = (String)baseline.get("MJ_APIKEY_PRIVATE");
-                String mj_public = (String)baseline.get("MJ_APIKEY_PUBLIC");
-                System.out.println("HOST : " +" "+host);
-                System.out.println("DBUSERNAME : " +" "+username);
-                System.out.println("DBPASSWORD : " +" "+password);
-                System.out.println("DRIVER : " +" "+driver);
-                System.out.println("MJ PRIVATE : "+" "+mj_private);
-                System.out.println("MJ PUBLIC :" +" "+mj_public);
-                SecurityUtil.getInstance().setDriver(driver);
-                SecurityUtil.getInstance().setHost(host);
-                SecurityUtil.getInstance().setPassword(password);
-                SecurityUtil.getInstance().setUsername(username);
-                SecurityUtil.getInstance().setMj_private(mj_private);
-                SecurityUtil.getInstance().setMj_public(mj_public);
-            }catch(ParseException e){
-                e.printStackTrace();
-            }
-
-            response.setContentType("text/html");
+        }
 
             String first = request.getParameter("first_name");
             String last = request.getParameter("last_name");
@@ -72,6 +77,10 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             String phone = request.getParameter("phone");
             String comments =  request.getParameter("comments");
             String referral = request.getParameter("referral");
+
+            String captchaResponse = request.getParameter("g-recaptcha-response");
+            System.out.println("CAPTCHA RESPONSE is: "+" "+captchaResponse);
+
             // clean
             String cleanfirstname = first.replaceAll("\\s", "");
             String cleanlastname = last.replaceAll("\\s", "");
@@ -131,11 +140,15 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             System.out.println("REFERRAL STRING IS: "+" "+referralStr);
 
             contact.setReferral(referralStr);
+            boolean isCaptchaValid = RecaptchaUtil.isCaptchaValid(SecurityUtil.getInstance().getRecaptchaSecret(), captchaResponse);
+            if (isCaptchaValid){
+                System.out.println("CAPTCHA VALID");
+            }
 
             boolean isValid = false;
 
             // Send email to customer
-            Map<String, String> map = EmailUtil.sendContactEmail(contact);
+            /*Map<String, String> map = EmailUtil.sendContactEmail(contact);
             for(Map.Entry entry : map.entrySet()){
                 System.out.println("KEY is: "+" "+entry.getKey());
                 System.out.println("VALUE is: "+" "+entry.getValue());
@@ -143,21 +156,41 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                 if (val.equalsIgnoreCase("success")){
                     isValid  = true;
                 }
-            }
+            }*/
             // Send email to Genevieve
-            if(isValid){
+            /*if(isValid){
                 EmailUtil.sendAdminEmail(contact);
-            }
+                // redirect contact to home
+                response.sendRedirect(request.getContextPath()+"/");
+            }*/
+
+            /*JSONObject json = new JSONObject();
+            json.put("name", cleanfirstname +", "+cleanlastname);
+            json.put("message", "Thank you for the inquiry");
+
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json.toJSONString());*/
+
+            request.setAttribute("con", contact);
+
+            System.out.println("DENNIS ATTRIBUTE IS: "+" "+request.getAttribute("con").toString());
+            //response.sendRedirect(request.getContextPath()+"/contactResult.jsp");
+            request.getRequestDispatcher("/contactResult.jsp").forward(request, response);
+
+            /* List<Product> products = someProductService.list();
+
+            request.setAttribute("products", products);
+            request.getRequestDispatcher("/WEB-INF/xml/products.jsp").forward(request, response);*/
 
 
-            // redirect contact to home
-            response.sendRedirect(request.getContextPath()+"/");
+            /*response.setContentType("text/html");
+            response.sendRedirect(request.getContextPath()+"/");*/
 
 
         }
 
 
-    }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 

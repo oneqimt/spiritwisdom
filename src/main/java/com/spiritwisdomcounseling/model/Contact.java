@@ -72,4 +72,17 @@ public class Contact {
     public void setReferral(String referral) {
         this.referral = referral;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactId=" + contactId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", comments='" + comments + '\'' +
+                ", referral='" + referral + '\'' +
+                '}';
+    }
 }
