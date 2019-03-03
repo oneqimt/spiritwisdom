@@ -27,6 +27,7 @@
 .practiceSection{
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 .breadcrumb{
@@ -62,6 +63,11 @@
 
 .icon-phone:before {
   content: "\e942";
+}
+
+.lead
+{
+  line-height: 3.5;
 }
 
 

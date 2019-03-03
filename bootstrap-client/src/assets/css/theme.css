@@ -16099,6 +16099,7 @@ h1,
 
 .practiceSection
 {
+    margin-top: 20px; 
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -16141,4 +16142,9 @@ h1,
 .icon-phone:before
 {
     content: '\e942';
+}
+
+.lead
+{
+    line-height: 3.5;
 }
