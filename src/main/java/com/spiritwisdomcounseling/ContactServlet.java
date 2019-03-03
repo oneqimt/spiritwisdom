@@ -51,12 +51,12 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                     String mj_public = (String) baseline.get("MJ_APIKEY_PUBLIC");
                     String recaptcha = (String) baseline.get("RECAPTCHA_SECRET_KEY");
                     System.out.println("HOST : " + " " + host);
-                    System.out.println("DBUSERNAME : " + " " + username);
+                   /* System.out.println("DBUSERNAME : " + " " + username);
                     System.out.println("DBPASSWORD : " + " " + password);
                     System.out.println("DRIVER : " + " " + driver);
                     System.out.println("MJ PRIVATE : " + " " + mj_private);
                     System.out.println("MJ PUBLIC :" + " " + mj_public);
-                    System.out.println("RECAPTCHA : " + " " + recaptcha);
+                    System.out.println("RECAPTCHA : " + " " + recaptcha);*/
                     SecurityUtil.getInstance().setDriver(driver);
                     SecurityUtil.getInstance().setHost(host);
                     SecurityUtil.getInstance().setPassword(password);
@@ -148,35 +148,39 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             boolean isValid = false;
 
             // Send email to customer
-            /*Map<String, String> map = EmailUtil.sendContactEmail(contact);
-            for(Map.Entry entry : map.entrySet()){
-                System.out.println("KEY is: "+" "+entry.getKey());
-                System.out.println("VALUE is: "+" "+entry.getValue());
-                String val = entry.getValue().toString();
-                if (val.equalsIgnoreCase("success")){
-                    isValid  = true;
+            Map<String, String> map = EmailUtil.sendContactEmail(contact);
+            if (map != null){
+                for(Map.Entry entry : map.entrySet()){
+                    System.out.println("CONTACT KEY is: "+" "+entry.getKey());
+                    System.out.println("CONTACT VALUE is: "+" "+entry.getValue());
+                    String val = entry.getValue().toString();
+                    if (val.equalsIgnoreCase("success")){
+                        isValid  = true;
+                    }else{
+                        //TODO notify user something went wrong
+
+                    }
                 }
-            }*/
-            // Send email to Genevieve
-            /*if(isValid){
-                EmailUtil.sendAdminEmail(contact);
+            }
+
+            // Send email to Genevieve and SAve contact to database
+            if(isValid){
+                Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
+                if (adminmap != null){
+                    for(Map.Entry entry : adminmap.entrySet()){
+                        System.out.println("ADMIN KEY is: "+" "+entry.getKey());
+                        System.out.println("ADMIN VALUE is: "+" "+entry.getValue());
+                    }
+                }
                 // redirect contact to home
                 response.sendRedirect(request.getContextPath()+"/");
-            }*/
+            }
 
-            /*JSONObject json = new JSONObject();
-            json.put("name", cleanfirstname +", "+cleanlastname);
-            json.put("message", "Thank you for the inquiry");
+            //request.setAttribute("con", contact);
 
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json.toJSONString());*/
-
-            request.setAttribute("con", contact);
-
-            System.out.println("DENNIS ATTRIBUTE IS: "+" "+request.getAttribute("con").toString());
+            //System.out.println("DENNIS ATTRIBUTE IS: "+" "+request.getAttribute("con").toString());
             //response.sendRedirect(request.getContextPath()+"/contactResult.jsp");
-            request.getRequestDispatcher("/contactResult.jsp").forward(request, response);
+            //request.getRequestDispatcher("/contactResult.jsp").forward(request, response);
 
             /* List<Product> products = someProductService.list();
 

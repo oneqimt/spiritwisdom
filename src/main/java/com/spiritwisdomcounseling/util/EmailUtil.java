@@ -29,13 +29,12 @@ public class EmailUtil {
 
     public static Map<String, String> sendContactEmail(Contact contact){
 
-        Map<String, String> map = new HashMap<>();
+
         String mjPrivate = SecurityUtil.getInstance().getMj_private();
         String mjPublic = SecurityUtil.getInstance().getMj_public();
 
         MailjetClient client;
         MailjetRequest request;
-        MailjetResponse response;
 
         String fullname = contact.getFirstName()+" "+contact.getLastName();
 
@@ -61,27 +60,10 @@ public class EmailUtil {
 
 
 
-        try{
-            response = client.post(request);
-            // TODO null checks
-            System.out.println(response.getStatus());
-            System.out.println(response.getData());
-            JSONArray successarr = response.getData();
-            JSONObject successobj = successarr.getJSONObject(0);
-            if(successobj != null){
-                map.put("Status", successobj.getString("Status"));
-            }
+        Map<String, String> map = postRequest(request, client);
 
+        return map;
 
-            // add any other props here
-
-            return map;
-        }catch (MailjetSocketTimeoutException e){
-            e.printStackTrace();
-        }catch (MailjetException e){
-            e.printStackTrace();
-        }
-        return null;
 
     }
 
@@ -99,11 +81,11 @@ public class EmailUtil {
 
         System.out.println("TIME TO SEND TO GENNY!");
 
-        Map<String, String> map = new HashMap<>();
+        //Map<String, String> map = new HashMap<>();
 
         MailjetClient client;
         MailjetRequest request;
-        MailjetResponse response;
+
 
 
         client = new MailjetClient(mjPublic, mjPrivate, new ClientOptions("v3.1"));
@@ -118,7 +100,8 @@ public class EmailUtil {
                                         .put(new JSONObject()
                                                 .put("Email", adminContact.getEmail())
                                                 .put("Name", adminContact.getFirstName())))
-                                .put(Emailv31.Message.CC, new JSONArray().put(new JSONObject().put("Email", "dennis.miller@8hzsymmetry.com").put("Name", "Dennis Miller")))
+                                .put(Emailv31.Message.CC, new JSONArray()
+                                        .put(new JSONObject().put("Email", "dennis.miller@8hzsymmetry.com").put("Name", "Dennis Miller")))
                                 .put(Emailv31.Message.TEMPLATEID, 702409)
                                 .put(Emailv31.Message.TEMPLATELANGUAGE, true)
                                 .put(Emailv31.Message.TEMPLATEERROR_REPORTING, new JSONObject()
@@ -133,7 +116,16 @@ public class EmailUtil {
 
 
 
+        Map<String, String> map = postRequest(request, client);
+
+        return map;
+
+    }
+
+    private static Map<String, String> postRequest( MailjetRequest request,  MailjetClient client){
         try{
+            MailjetResponse response;
+            Map<String, String> map = new HashMap<>();
             response = client.post(request);
             // TODO null checks
             System.out.println(response.getStatus());
@@ -154,6 +146,5 @@ public class EmailUtil {
             e.printStackTrace();
         }
         return null;
-
     }
 }
