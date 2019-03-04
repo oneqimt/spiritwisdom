@@ -163,7 +163,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                 }
             }
 
-            // Send email to Genevieve and SAve contact to database
+            // Send email to Genevieve
             if(isValid){
                 Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
                 if (adminmap != null){
@@ -172,6 +172,8 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                         System.out.println("ADMIN VALUE is: "+" "+entry.getValue());
                     }
                 }
+
+                //TODO Save contact to database
                 // redirect contact to home
                 response.sendRedirect(request.getContextPath()+"/");
             }
