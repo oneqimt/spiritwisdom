@@ -1,5 +1,6 @@
 package com.spiritwisdomcounseling;
 
+import com.spiritwisdomcounseling.database.DBManager;
 import com.spiritwisdomcounseling.model.Contact;
 import com.spiritwisdomcounseling.util.EmailUtil;
 import com.spiritwisdomcounseling.util.RecaptchaUtil;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -50,7 +52,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                     String mj_private = (String) baseline.get("MJ_APIKEY_PRIVATE");
                     String mj_public = (String) baseline.get("MJ_APIKEY_PUBLIC");
                     String recaptcha = (String) baseline.get("RECAPTCHA_SECRET_KEY");
-                    System.out.println("HOST : " + " " + host);
+                   // System.out.println("HOST : " + " " + host);
                    /* System.out.println("DBUSERNAME : " + " " + username);
                     System.out.println("DBPASSWORD : " + " " + password);
                     System.out.println("DRIVER : " + " " + driver);
@@ -165,34 +167,30 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
 
             // Send email to Genevieve
             if(isValid){
-                Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
-                if (adminmap != null){
-                    for(Map.Entry entry : adminmap.entrySet()){
-                        System.out.println("ADMIN KEY is: "+" "+entry.getKey());
-                        System.out.println("ADMIN VALUE is: "+" "+entry.getValue());
-                    }
+            Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
+            if (adminmap != null){
+                for(Map.Entry entry : adminmap.entrySet()){
+                    System.out.println("ADMIN KEY is: "+" "+entry.getKey());
+                    System.out.println("ADMIN VALUE is: "+" "+entry.getValue());
                 }
-
-                //TODO Save contact to database
-                // redirect contact to home
-                response.sendRedirect(request.getContextPath()+"/");
             }
 
-            //request.setAttribute("con", contact);
+        }
 
-            //System.out.println("DENNIS ATTRIBUTE IS: "+" "+request.getAttribute("con").toString());
-            //response.sendRedirect(request.getContextPath()+"/contactResult.jsp");
-            //request.getRequestDispatcher("/contactResult.jsp").forward(request, response);
+        //Save contact to database
+        DBManager dbManager = new DBManager();
 
-            /* List<Product> products = someProductService.list();
+        try{
+            String success = dbManager.addContact(contact);
+            System.out.println("INSERT INTO DB : "+" "+success);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
 
-            request.setAttribute("products", products);
-            request.getRequestDispatcher("/WEB-INF/xml/products.jsp").forward(request, response);*/
-
-
-            /*response.setContentType("text/html");
-            response.sendRedirect(request.getContextPath()+"/");*/
-
+        // redirect contact to home
+        response.sendRedirect(request.getContextPath()+"/");
 
         }
 

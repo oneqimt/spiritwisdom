@@ -20,9 +20,6 @@ import java.util.Map;
  */
 public class EmailUtil {
 
-    /*public static final String MJ_APIKEY_PUBLIC =  System.getenv("MJ_APIKEY_PUBLIC");
-    public static final String MJ_APIKEY_PRIVATE =  System.getenv("MJ_APIKEY_PRIVATE");*/
-
     private EmailUtil(){
 
     }
@@ -44,7 +41,7 @@ public class EmailUtil {
                 .property(Emailv31.MESSAGES, new JSONArray()
                         .put(new JSONObject()
                                 .put(Emailv31.Message.FROM, new JSONObject()
-                                        .put("Email", "dennis.miller@8hzsymmetry.com")
+                                        .put("Email", "genevieve.miller@spiritwisdomcounseling.com")
                                         .put("Name", "Spirit Wisdom Counseling"))
                                 .put(Emailv31.Message.TO, new JSONArray()
                                         .put(new JSONObject()
@@ -72,7 +69,7 @@ public class EmailUtil {
         Contact adminContact = new Contact();
         adminContact.setFirstName("Genevieve");
         adminContact.setLastName("Miller");
-        adminContact.setEmail("spiritwisdomcounseling@gmail.com");
+        adminContact.setEmail("genevieve.miller@spiritwisdomcounseling.com");
 
         String mjPrivate = SecurityUtil.getInstance().getMj_private();
         String mjPublic = SecurityUtil.getInstance().getMj_public();
@@ -81,12 +78,8 @@ public class EmailUtil {
 
         System.out.println("TIME TO SEND TO GENNY!");
 
-        //Map<String, String> map = new HashMap<>();
-
         MailjetClient client;
         MailjetRequest request;
-
-
 
         client = new MailjetClient(mjPublic, mjPrivate, new ClientOptions("v3.1"));
 
@@ -127,7 +120,6 @@ public class EmailUtil {
             MailjetResponse response;
             Map<String, String> map = new HashMap<>();
             response = client.post(request);
-            // TODO null checks
             System.out.println(response.getStatus());
             System.out.println(response.getData());
             JSONArray successarr = response.getData();
