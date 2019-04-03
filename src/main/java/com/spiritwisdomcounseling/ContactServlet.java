@@ -22,6 +22,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author Dennis Miller
  */
@@ -32,7 +33,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
 
 
         Contact contact = new Contact();
-        if (SecurityUtil.getInstance().getRecaptchaSecret() == null){
+        if (SecurityUtil.getInstance().getRecaptchaSecret() == null) {
             // LOAD BASELINE DATA first
             InputStream resourceAsStream = ContactServlet.class.getResourceAsStream("/baseline.json");
             if (resourceAsStream != null) {
@@ -52,7 +53,7 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
                     String mj_private = (String) baseline.get("MJ_APIKEY_PRIVATE");
                     String mj_public = (String) baseline.get("MJ_APIKEY_PUBLIC");
                     String recaptcha = (String) baseline.get("RECAPTCHA_SECRET_KEY");
-                   // System.out.println("HOST : " + " " + host);
+                    // System.out.println("HOST : " + " " + host);
                    /* System.out.println("DBUSERNAME : " + " " + username);
                     System.out.println("DBPASSWORD : " + " " + password);
                     System.out.println("DRIVER : " + " " + driver);
@@ -73,92 +74,91 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             }
         }
 
-            String first = request.getParameter("first_name");
-            String last = request.getParameter("last_name");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
-            String comments =  request.getParameter("comments");
-            String referral = request.getParameter("referral");
+        String first = request.getParameter("first_name");
+        String last = request.getParameter("last_name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String comments = request.getParameter("comments");
+        String referral = request.getParameter("referral");
 
-            String captchaResponse = request.getParameter("g-recaptcha-response");
-            System.out.println("CAPTCHA RESPONSE is: "+" "+captchaResponse);
+        String captchaResponse = request.getParameter("g-recaptcha-response");
+        System.out.println("CAPTCHA RESPONSE is: " + " " + captchaResponse);
 
-            // clean
-            String cleanfirstname = first.replaceAll("\\s", "");
-            String cleanlastname = last.replaceAll("\\s", "");
+        // clean
+        String cleanfirstname = first.replaceAll("\\s", "");
+        String cleanlastname = last.replaceAll("\\s", "");
 
-            contact.setContactId(0);
-            contact.setFirstName(cleanfirstname);
-            contact.setLastName(cleanlastname);
-            contact.setEmail(email);
-            contact.setPhone(phone);
-            contact.setComments(comments);
+        contact.setContactId(0);
+        contact.setFirstName(cleanfirstname);
+        contact.setLastName(cleanlastname);
+        contact.setEmail(email);
+        contact.setPhone(phone);
+        contact.setComments(comments);
 
-            System.out.println("FIRST NAME: "+cleanfirstname +" "+"LAST NAME: "+cleanlastname);
-            System.out.println("EMAIL: "+email +" "+"PHONE: "+phone);
-            System.out.println("COMMENTS: "+comments +" "+"REFERRAL: "+referral);
+        System.out.println("FIRST NAME: " + cleanfirstname + " " + "LAST NAME: " + cleanlastname);
+        System.out.println("EMAIL: " + email + " " + "PHONE: " + phone);
+        System.out.println("COMMENTS: " + comments + " " + "REFERRAL: " + referral);
 
-            int referralnumber = Integer.parseInt(referral);
-            // testing comments
-            //TODO create table for this
+        int referralnumber = Integer.parseInt(referral);
+        // testing comments
+        //TODO create table for this
 
-            String referralStr = "";
-            switch (referralnumber){
-                case 0:
+        String referralStr = "";
+        switch (referralnumber) {
+            case 0:
 
-                    break;
+                break;
 
-                case 1:
-                    referralStr = "I'm an existing patient";
+            case 1:
+                referralStr = "I'm an existing patient";
 
-                    break;
+                break;
 
-                case 2:
-                    referralStr = "Search engine";
+            case 2:
+                referralStr = "Search engine";
 
-                    break;
+                break;
 
-                case 3:
-                    referralStr = "Mailer";
+            case 3:
+                referralStr = "Mailer";
 
-                    break;
+                break;
 
-                case 4:
-                    referralStr = "Word of mouth";
+            case 4:
+                referralStr = "Word of mouth";
 
-                    break;
+                break;
 
-                case 5:
-                    referralStr = "Social Media";
+            case 5:
+                referralStr = "Social Media";
 
-                    break;
+                break;
 
-                case 6:
-                    referralStr = "Other";
+            case 6:
+                referralStr = "Other";
 
-                    break;
-            }
+                break;
+        }
 
-            System.out.println("REFERRAL STRING IS: "+" "+referralStr);
+        System.out.println("REFERRAL STRING IS: " + " " + referralStr);
 
-            contact.setReferral(referralStr);
-            boolean isCaptchaValid = RecaptchaUtil.isCaptchaValid(SecurityUtil.getInstance().getRecaptchaSecret(), captchaResponse);
-            if (isCaptchaValid){
-                System.out.println("CAPTCHA VALID");
-            }
+        contact.setReferral(referralStr);
 
+        // if captcha is valid - don't do anything if captcha is not valid
+        boolean isCaptchaValid = RecaptchaUtil.isCaptchaValid(SecurityUtil.getInstance().getRecaptchaSecret(), captchaResponse);
+        if (isCaptchaValid) {
+            System.out.println("CAPTCHA VALID");
             boolean isValid = false;
-
             // Send email to customer
             Map<String, String> map = EmailUtil.sendContactEmail(contact);
-            if (map != null){
-                for(Map.Entry entry : map.entrySet()){
-                    System.out.println("CONTACT KEY is: "+" "+entry.getKey());
-                    System.out.println("CONTACT VALUE is: "+" "+entry.getValue());
+            if (map != null) {
+                for (Map.Entry entry : map.entrySet()) {
+                    System.out.println("CONTACT KEY is: " + " " + entry.getKey());
+                    System.out.println("CONTACT VALUE is: " + " " + entry.getValue());
                     String val = entry.getValue().toString();
-                    if (val.equalsIgnoreCase("success")){
-                        isValid  = true;
-                    }else{
+                    if (val.equalsIgnoreCase("success")) {
+                        isValid = true;
+                    } else {
                         //TODO notify user something went wrong
 
                     }
@@ -166,34 +166,42 @@ public class ContactServlet extends javax.servlet.http.HttpServlet {
             }
 
             // Send email to Genevieve
-            if(isValid){
-            Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
-            if (adminmap != null){
-                for(Map.Entry entry : adminmap.entrySet()){
-                    System.out.println("ADMIN KEY is: "+" "+entry.getKey());
-                    System.out.println("ADMIN VALUE is: "+" "+entry.getValue());
+            if (isValid) {
+                Map<String, String> adminmap = EmailUtil.sendAdminEmail(contact);
+                if (adminmap != null) {
+                    for (Map.Entry entry : adminmap.entrySet()) {
+                        System.out.println("ADMIN KEY is: " + " " + entry.getKey());
+                        System.out.println("ADMIN VALUE is: " + " " + entry.getValue());
+                    }
                 }
+
             }
 
-        }
+            //Save contact to database
 
-        //Save contact to database
-        DBManager dbManager = new DBManager();
+            if (isValid) {
 
-        try{
-            String success = dbManager.addContact(contact);
-            System.out.println("INSERT INTO DB : "+" "+success);
-        }catch (SQLException e){
-            e.printStackTrace();
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }
+                DBManager dbManager = new DBManager();
+
+                try {
+                    String success = dbManager.addContact(contact);
+                    System.out.println("INSERT INTO DB : " + " " + success);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("DB SQL Exception fired:"+" "+e.getMessage());
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                    System.out.println("DB class not found exception " +" "+e.getMessage());
+                }
+
+            }
+
+        }// end if captcha valid
 
         // redirect contact to home
-        response.sendRedirect(request.getContextPath()+"/");
+        response.sendRedirect(request.getContextPath() + "/");
 
-        }
-
+    }
 
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {

@@ -8,7 +8,6 @@
     })
 
     <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
         'use strict';
         window.addEventListener('load', function() {
@@ -42,7 +41,6 @@
           return false;
         }else{
           var form = document.querySelector('#contact-form');
-          //inquiryCall(form);
           return true;
         }
 
@@ -258,7 +256,7 @@
               <div class="form-group col-md-12">
                 <!-- Message -->
                 <label>Your comments</label>
-                <textarea class="form-control" name="comments" rows="7" ></textarea>
+                <textarea class="form-control" name="comments" rows="4" maxlength="5000" ></textarea>
               </div>
 
             </div>
