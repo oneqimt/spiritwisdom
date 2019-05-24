@@ -1,7 +1,7 @@
 WORK FLOW
 
 edit html files in bootstrap-client
-then follow build below
+then follow build process below
 
 
 BUILD bootstrap project using gulp

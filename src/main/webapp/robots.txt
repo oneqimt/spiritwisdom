@@ -1,2 +1,6 @@
+# All robots allowed
 User-agent: *
-Allow: /
+Disallow:
+# Sitemap files
+Sitemap: https://www.spiritwisdomcounseling.com/sitemap.xml
+
