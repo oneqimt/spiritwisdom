@@ -1,404 +1,412 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
 
-    <meta name="description" content="Let's Chat! Contact Genevieve Miller Licensed Counselor With Spirit Wisdom Counseling in Denver, CO 80224"/>
+    <meta name="description"
+          content="Let's Chat! Contact Genevieve Miller Licensed Counselor With Spirit Wisdom Counseling in Denver, CO 80224"/>
 
     @@include("partials/head.html", {
-      "css": "theme",
-      "title": "Relationship Counseling & Cognitive Behavior Therapy | Denver, CO 80224"
+    "css": "theme",
+    "title": "Relationship Counseling & Cognitive Behavior Therapy | Denver, CO 80224"
     })
 
     <script>
-      (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
 
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
             }, false);
-          });
-        }, false);
-      })();
+        })();
     </script>
 
     <script>
 
-      function submitUserForm() {
-        console.log('IN SUBMIT USER FORM');
+        function submitUserForm() {
+            console.log('IN SUBMIT USER FORM');
 
-        var response = grecaptcha.getResponse();
-        if(response.length == 0) {
-          document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Needed to check for robots.</span>';
-          alert('Please let us know that you are not a robot');
-          grecaptcha.reset();
-          return false;
-        }else{
-          var form = document.querySelector('#contact-form');
-          return true;
+            var response = grecaptcha.getResponse();
+            if (response.length == 0) {
+                document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Needed to check for robots.</span>';
+                alert('Please let us know that you are not a robot');
+                grecaptcha.reset();
+                return false;
+            } else {
+                var form = document.querySelector('#contact-form');
+                return true;
+            }
+
         }
 
-      }
-
-      /*function verifyCallback(response) {
-        document.getElementById('g-recaptcha-error').innerHTML = '';
-        console.log( 'g-recaptcha-response: ' + response );
-      }*/
+        /*function verifyCallback(response) {
+          document.getElementById('g-recaptcha-error').innerHTML = '';
+          console.log( 'g-recaptcha-response: ' + response );
+        }*/
 
     </script>
 
 
-  </head>
-  <body>
+</head>
+<body>
 
-    <!-- NAVBAR
-    ================================================= -->
-    @@include("partials/navbar.html", {
-      "togglable": false,
-      "type": "light",
-      "page": "contact.html"
-    })
+<!-- NAVBAR
+================================================= -->
+@@include("partials/navbar.html", {
+"togglable": false,
+"type": "light",
+"page": "contact.html"
+})
 
-    <!-- BREADCRUMB
-    ================================================== -->
-    <nav class="breadcrumb">
-      <div class="container">
+<!-- BREADCRUMB
+================================================== -->
+<nav class="breadcrumb">
+    <div class="container">
         <div class="row align-items-center">
-          <div class="col">
-            
-            <!-- Heading -->
-            <h5 class="breadcrumb-heading">
-              Contact
-            </h5>
+            <div class="col">
 
-          </div>
-          <div class="col-auto">
+                <!-- Heading -->
+                <h5 class="breadcrumb-heading">
+                    Contact
+                </h5>
 
-            <!-- Breadcrumb -->
-            <span class="breadcrumb-item">
+            </div>
+            <div class="col-auto">
+
+                <!-- Breadcrumb -->
+                <span class="breadcrumb-item">
               <a href="/">Home</a>
             </span>
-            <span class="breadcrumb-item active">
+                <span class="breadcrumb-item active">
               Contact
             </span>
-          
-          </div>
-        </div> <!-- / .row -->
-      </div> <!-- / .container -->
-    </nav>
-
-    <!-- MAP
-    ================================================== -->
-    <section class="section pb-0">
-
-      <!-- Content -->
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-
-            <!-- Map -->
-            <div class="map">
-              <div class="map-container" data-markers="[[39.699046900, -104.909821500]]" data-zoom="13"></div>
-            </div>
-            
-          </div>
-        </div> <!-- / .row -->
-      </div> <!-- / .container -->
-
-    </section>
-
-    <!-- FORM
-    ================================================== -->
-    <section class="section pb-0">
-
-      <!-- Content -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-
-            <!-- Title -->
-            <h6 class="title">
-              Contact form and information
-            </h6>
-            
-          </div>
-          <div class="col-md-10">
-
-            <!-- Heading -->
-            <h3 class="mb-4">
-              Have questions? Send me an <span class="text-primary">e-mail</span>
-            </h3>
-
-            <!-- Subheading -->
-            <p class="text-muted mb-5">
-              I would love to hear from you! Please send me an email with questions or comments.
-            </p>
-
-            <!-- Form add if want novalidate   class="needs-validation"    -->
-            <form id="contact-form"
-                  name="contact-form"
-                  onsubmit="return submitUserForm();"
-                  class="needs-validation"
-                  method="post"
-                  action="contact"
-                  novalidate="">
-              <div class="messages"></div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-
-                <!-- first Name -->
-                <label>First name *</label>
-                <div>
-                  <input type="text" class="form-control" name="first_name" maxlength="100" required>
-                  <div class="invalid-tooltip">
-                    Please enter first name...
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="form-group col-md-6">
-
-                <!-- last Name -->
-                <label>Last name *</label>
-                <div>
-                  <input type="text" class="form-control" name="last_name" maxlength="100" required>
-                  <div class="invalid-tooltip">
-                    Please enter last name...
-                  </div>
-                </div>
-
-
-              </div>
-
-            </div> <!-- / .form-row -->
-
-            <div class="form-row">
-
-              <div class="form-group col-md-6">
-                <!-- Email -->
-                <label>Email address *</label>
-                <div class="input-group">
-                  <input type="email" class="form-control" name="email" maxlength="120" required>
-                  <div class="invalid-tooltip">
-                    Please enter valid email...
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <div class="form-group col-md-6">
-                <!-- Phone  REG EX LIB http://regexlib.com/REDetails.aspx?regexp_id=58 Igor Kravtsov
-                Matches
-                  1-(123)-123-1234 | 123 123 1234 | 1-800-ALPHNUM
-                Non-Matches
-                   1.123.123.1234 | (123)-1234-123 | 123-1234
-                -->
-                <label>Phone</label>
-                <div class="input-group">
-                  <input type="tel" class="form-control" name="phone" maxlength="100"
-                         pattern="^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$"
-                         placeholder="">
-                  <div class="invalid-tooltip">
-                    Please enter valid phone number...
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div> <!--form-row -->
-
-            <div class="form-row">
-
-              <div class="form-group">
-                <label>
-                  How did you hear about me?
-                </label>
-                <select class="custom-select" name="referral">
-                  <option value="0" select-value="Please choose">
-                    Please choose
-                  </option>
-                  <option value="1" select-value="I'm an existing patient">
-                    I'm an existing patient
-                  </option>
-                  <option value="2" select-value="Search engine">
-                    Search engine
-                  </option>
-                  <option value="3" select-value="Mailer">
-                    Mailer
-                  </option>
-                  <option value="4" select-value="Word of mouth">
-                    Word of mouth
-                  </option>
-                  <option value="5" select-value="Social Media">
-                    Social Media
-                  </option>
-                  <option value="6" select-value="Other">
-                    Other
-                  </option>
-                </select>
-
-              </div>
-
-
-            </div> <!-- / .form-row -->
-
-            <div class="form-row">
-              <div class="form-group col-md-12">
-                <!-- Message -->
-                <label>Your comments</label>
-                <textarea class="form-control" name="comments" rows="4" maxlength="5000" ></textarea>
-              </div>
 
             </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</nav>
 
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                  <!--RECAPTCHA  data-callback="verifyCallback"
-                       data-expired-callback="expiredCallback"-->
-                  <div id="captchaId" class="g-recaptcha" data-sitekey="6LfRzJIUAAAAAN9eXPdFwhe5TNttJD2DT7Bnx4zG">
-                  </div>
-                  <div id="g-recaptcha-error"></div>
+<!-- MAP
+================================================== -->
+<section class="section pb-0">
 
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Map -->
+                <div class="map">
+                    <div class="map-container" data-markers="[[39.699046900, -104.909821500]]"
+                         data-zoom="13"></div>
                 </div>
 
-              </div>
-
-              <div class="form-row">
-              <div class="col-12">
-
-                <!-- Submit formaction="contact" formmethod="post" -->
-                <button type="submit" class="btn btn-outline-primary">
-                  Send message
-                </button>
-
-                <!-- Reset -->
-                <button type="reset" class="btn btn-link">
-                  Reset form
-                </button>
-
-              </div>
             </div>
-
-          </form>
-            
-          </div>
         </div> <!-- / .row -->
-      </div> <!-- / .container -->
+    </div> <!-- / .container -->
 
-    </section>
+</section>
 
-    <!-- OFFICES
-    ================================================== -->
-    <section class="section">
+<!-- FORM
+================================================== -->
+<section class="section pb-0">
 
-      <!-- Content -->
-      <div class="container">
+    <!-- Content -->
+    <div class="container">
         <div class="row">
-          <div class="col-md-2">
-            
-            <!-- Title -->
-            <h6 class="title">
-              My office
-            </h6>
+            <div class="col-md-2">
 
-          </div>
-          <div class="col-md-10">
+                <!-- Title -->
+                <h6 class="title">
+                    Contact form and information
+                </h6>
 
-            <!-- Heading -->
-            <h3 class="mb-4">
-              Want to talk <span class="text-primary">in person</span>? Call me or visit me
-            </h3>
+            </div>
+            <div class="col-md-10">
 
-            <!-- Subheading -->
-            <p class="text-muted mb-5">
-              Let's chat! Give me a call for a free consultation to see if we are a good fit.
-            </p>
-            
-            <!-- Content -->
-            <div class="row">
-              <div class="col-md-6 col-lg-5">
-                
                 <!-- Heading -->
-                <h5>
-                  Location:
-                </h5>
-                
-                <!-- Address -->
-                <p class="text-muted">
-                  6795 E Tennessee Ave<br>
-                  Suite 1-406<br>
-                  Denver, CO 80224
+                <h3 class="mb-4">
+                    Have questions? Send me an <span class="text-primary">e-mail</span>
+                </h3>
+
+                <!-- Subheading -->
+                <p class="text-muted mb-5">
+                    I would love to hear from you! Please send me an email with questions or
+                    comments.
                 </p>
 
-                <!-- Heading -->
-                <h5>
-                  Email:
-                </h5>
-                
-                <!-- Address -->
-                <p class="text-muted">
-                  <a href="mailto:genevieve.miller@spiritwisdomcounseling.com?subject=Inquiry from contact page">
-                    genevieve.miller@spiritwisdomcounseling.com
-                  </a>
-                </p>
+                <!-- Form add if want novalidate   class="needs-validation"    -->
+                <form id="contact-form"
+                      name="contact-form"
+                      onsubmit="return submitUserForm();"
+                      class="needs-validation"
+                      method="post"
+                      action="contact"
+                      novalidate="">
+                    <div class="messages"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
 
-              </div>
-              <div class="col-md-6 col-lg-5">
+                            <!-- first Name -->
+                            <label>First name *</label>
+                            <div>
+                                <input type="text" class="form-control" name="first_name"
+                                       maxlength="100" required>
+                                <div class="invalid-tooltip">
+                                    Please enter first name...
+                                </div>
+                            </div>
 
-                <!-- Heading -->
-                <h5>
-                  Call me:
-                </h5>
-                
-                <!-- Phone -->
-                <p class="text-muted">
-                  <a href="tel:3038420984">
-                    (303) 842-0984
-                  </a>
-                </p>
+                        </div>
 
-                <!-- Heading -->
-                <!--<h5>
-                  Skype:
-                </h5>-->
-                
-                <!-- Phone -->
-                <!--<p class="text-muted">
-                  <a href="tel:1234567890">
-                    spiritwisdom.skype
-                  </a>
-                </p>-->
+                        <div class="form-group col-md-6">
 
-              </div>
-            </div>   <!-- / .row -->
+                            <!-- last Name -->
+                            <label>Last name *</label>
+                            <div>
+                                <input type="text" class="form-control" name="last_name"
+                                       maxlength="100" required>
+                                <div class="invalid-tooltip">
+                                    Please enter last name...
+                                </div>
+                            </div>
 
-          </div>
+
+                        </div>
+
+                    </div> <!-- / .form-row -->
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <!-- Email -->
+                            <label>Email address *</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" name="email"
+                                       maxlength="120" required>
+                                <div class="invalid-tooltip">
+                                    Please enter valid email...
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <!-- Phone  REG EX LIB http://regexlib.com/REDetails.aspx?regexp_id=58 Igor Kravtsov
+                            Matches
+                              1-(123)-123-1234 | 123 123 1234 | 1-800-ALPHNUM
+                            Non-Matches
+                               1.123.123.1234 | (123)-1234-123 | 123-1234
+                            -->
+                            <label>Phone</label>
+                            <div class="input-group">
+                                <input type="tel" class="form-control" name="phone" maxlength="100"
+                                       pattern="^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$"
+                                       placeholder="">
+                                <div class="invalid-tooltip">
+                                    Please enter valid phone number...
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div> <!--form-row -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>
+                                How did you hear about me?
+                            </label>
+                            <select class="custom-select" name="referral">
+                                <option value="0" select-value="Please choose">
+                                    Please choose
+                                </option>
+                                <option value="1" select-value="I'm an existing patient">
+                                    I'm an existing patient
+                                </option>
+                                <option value="2" select-value="Search engine">
+                                    Search engine
+                                </option>
+                                <option value="3" select-value="Mailer">
+                                    Mailer
+                                </option>
+                                <option value="4" select-value="Word of mouth">
+                                    Word of mouth
+                                </option>
+                                <option value="5" select-value="Social Media">
+                                    Social Media
+                                </option>
+                                <option value="6" select-value="Other">
+                                    Other
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                    </div> <!-- / .form-row -->
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <!-- Message -->
+                            <label>Your comments</label>
+                            <textarea class="form-control" name="comments" rows="4"
+                                      maxlength="5000"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <!--RECAPTCHA  data-callback="verifyCallback"
+                                 data-expired-callback="expiredCallback"-->
+                            <div id="captchaId" class="g-recaptcha"
+                                 data-sitekey="6LfRzJIUAAAAAN9eXPdFwhe5TNttJD2DT7Bnx4zG">
+                            </div>
+                            <div id="g-recaptcha-error"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-12">
+
+                            <!-- Submit formaction="contact" formmethod="post" -->
+                            <button type="submit" class="btn btn-outline-primary">
+                                Send message
+                            </button>
+
+                            <!-- Reset -->
+                            <button type="reset" class="btn btn-link">
+                                Reset form
+                            </button>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
         </div> <!-- / .row -->
-      </div> <!-- / .container -->
+    </div> <!-- / .container -->
 
-    </section>
+</section>
 
-    <!-- FOOTER
-    ================================================== -->
-    @@include("partials/footer.html")
+<!-- OFFICES
+================================================== -->
+<section class="section">
 
-    <!-- JAVASCRIPT
-    ================================================== -->
-    @@include("partials/scripts.html")
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+                <!-- Title -->
+                <h6 class="title">
+                    My office
+                </h6>
 
-  </body>
+            </div>
+            <div class="col-md-10">
+
+                <!-- Heading -->
+                <h3 class="mb-4">
+                    Want to talk <span class="text-primary">in person</span>? Call me or visit me
+                </h3>
+
+                <!-- Subheading -->
+                <p class="text-muted mb-5">
+                    Let's chat! Give me a call for a free consultation to see if we are a good fit.
+                </p>
+
+                <!-- Content -->
+                <div class="row">
+                    <div class="col-md-6 col-lg-5">
+
+                        <!-- Heading -->
+                        <h5>
+                            Location:
+                        </h5>
+
+                        <!-- Address -->
+                        <p class="text-muted">
+                            6795 E Tennessee Ave<br>
+                            Suite 1-406<br>
+                            Denver, CO 80224
+                        </p>
+
+                        <!-- Heading -->
+                        <h5>
+                            Email:
+                        </h5>
+
+                        <!-- Address -->
+                        <p class="text-muted">
+                            <a href="mailto:genevieve.miller@spiritwisdomcounseling.com?subject=Inquiry from contact page">
+                                genevieve.miller@spiritwisdomcounseling.com
+                            </a>
+                        </p>
+
+                    </div>
+                    <div class="col-md-6 col-lg-5">
+
+                        <!-- Heading -->
+                        <h5>
+                            Call me:
+                        </h5>
+
+                        <!-- Phone -->
+                        <p class="text-muted">
+                            <a href="tel:3038420984">
+                                (303) 842-0984
+                            </a>
+                        </p>
+
+                        <!-- Heading -->
+                        <!--<h5>
+                          Skype:
+                        </h5>-->
+
+                        <!-- Phone -->
+                        <!--<p class="text-muted">
+                          <a href="tel:1234567890">
+                            spiritwisdom.skype
+                          </a>
+                        </p>-->
+
+                    </div>
+                </div>   <!-- / .row -->
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+</section>
+
+<!-- FOOTER
+================================================== -->
+@@include("partials/footer.html")
+
+<!-- JAVASCRIPT
+================================================== -->
+@@include("partials/scripts.html")
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+</body>
 </html>
