@@ -30,8 +30,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.1",
     "bootstrap": "^4.2.1",
-    "flickity": "^2.2.0",
-    "fullpage.js": "^3.0.4",
     "gulp-open": "^3.0.1",
     "highlightjs": "^9.12.0",
     "jquery": "^3.3.1",
