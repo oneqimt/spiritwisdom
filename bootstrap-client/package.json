@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.1",
+    "autoprefixer": "^9.7.1",
     "bootstrap": "^4.2.1",
     "gulp-open": "^3.0.1",
     "highlightjs": "^9.12.0",
